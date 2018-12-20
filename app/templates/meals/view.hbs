@@ -1,0 +1,32 @@
+<br />
+<h2>Ingredients for {{model.name}}</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">
+        Name
+      </th>
+      <th scope="col">
+        Quantity
+      </th>
+      <th scope="col">
+        Measure
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model.recipes as |recipe|}}
+      <tr>
+        <td>
+          {{recipe.ingredient.name}}
+        </td>
+        <td>
+          {{recipe.quantity}}
+        </td>
+        <td>
+          {{recipe.measure}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

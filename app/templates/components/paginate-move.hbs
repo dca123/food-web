@@ -1,0 +1,9 @@
+{{#if pageNum}}
+  <li class="page-item">
+    {{link-to moveText 'meals' (query-params page=pageNum) class='page-link'}}
+  </li>
+{{else}}
+  <li class="page-item disabled">
+    {{link-to moveText 'meals' (query-params page=pageNum) class='page-link'}}
+  </li>
+{{/if}}

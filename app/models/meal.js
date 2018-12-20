@@ -5,5 +5,5 @@ export default DS.Model.extend({
   notes: DS.attr('string'),
   serves: DS.attr('number'),
   ingredients: DS.hasMany('ingredient'),
-  recipes: DS.hasMany('recipe')
+  recipes: DS.hasMany('recipe', {async: false})
 });

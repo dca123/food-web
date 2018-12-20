@@ -1,0 +1,55 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">
+        Name
+      </th>
+      <th scope="col">
+        Notes
+      </th>
+      <th scope="col">
+        Serving
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each model as |meal|}}
+      <tr>
+        <td>
+          {{#link-to 'meals.view' meal.id}}{{meal.name}}{{/link-to}}
+        </td>
+        <td>
+          {{meal.notes}}
+        </td>
+        <td>
+          {{meal.serves}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="row justify-content-center">
+  <div class="col-4">
+    <ul class="pagination ">
+      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number}}
+      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number}}
+
+      {{#each count as |number|}}
+      {{#if (eq number model.meta.pagination.self.number)}}
+      <li class="page-item active">
+        {{link-to number 'meals' (query-params page=number) class="page-link"}}
+      </li>
+      {{else}}
+      <li class="page-item">
+        {{link-to number 'meals' (query-params page=number) class="page-link"}}
+      </li>
+      {{/if}}
+      {{/each}}
+
+      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number}}
+      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number}}
+
+    </ul>
+  </div>
+</div>
