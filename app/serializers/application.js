@@ -9,6 +9,9 @@ export default DS.JSONAPISerializer.extend({
     }
     return result;
   },
+  keyForAttribute(key) {
+    return key;
+  },
   createPageMeta(data) {
 
     let meta = {};
