@@ -1,4 +1,10 @@
 body {
   padding-top: 20px;
 }
+
+$body-bg: #ffffff;
+$primary: #6f2c91;
+
 @import "ember-bootstrap/bootstrap";
+@import "ember-power-select/themes/bootstrap";
+@import "ember-power-select";

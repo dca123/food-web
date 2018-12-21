@@ -16,7 +16,9 @@ module.exports = function(environment) {
         Date: false
       }
     },
-
+    'ember-cli-string-helpers': {
+      only: ['capitalize'],
+    },
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
@@ -46,6 +48,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // here you can enable a production-specific feature
   }
+
 
   return ENV;
 };
