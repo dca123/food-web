@@ -1,6 +1,6 @@
 <div class="row pt-4 pb-2 justify-content-end">
   <div class="col-3">
-    {{#power-select options=names selected=category class="" placeholder="Filter Meal Type" onchange=(action "changeCategory") as |name|}}
+    {{#power-select options=names selected=category placeholder="Filter Meal Type" onchange=(action "changeCategory") as |name|}}
     {{capitalize name}}
     {{/power-select}}
   </div>
@@ -48,8 +48,8 @@
 <div class="row justify-content-center">
   <div class="col-4">
     <ul class="pagination ">
-      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number}}
-      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number}}
+      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='meals'}}
+      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='meals'}}
 
       {{#each count as |number|}}
       {{#if (eq number model.meta.pagination.self.number)}}
@@ -63,8 +63,8 @@
       {{/if}}
       {{/each}}
 
-      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number}}
-      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number}}
+      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='meals'}}
+      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number moveLink='meals'}}
 
     </ul>
   </div>

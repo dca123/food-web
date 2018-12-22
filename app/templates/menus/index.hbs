@@ -1,0 +1,74 @@
+<div class="row pb-2 justify-content-end">
+  <div class="col">
+    <h2>Menu List</h2>
+  </div>
+  <div class="col-3">
+    {{#power-select options=months selected=monthDestination placeholder="Filter by Month" onchange=(action "changeMonth") as |month|}}
+    {{ month}}
+    {{/power-select}}
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">
+            Week Of
+          </th>
+          <th scope="col">
+            Month
+          </th>
+          <th scope="col">
+            Year
+          </th>
+          <th scope="col">
+            Cost
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |menu|}}
+        <tr>
+          <td>
+            {{link-to menu.weekOf "menus.view" menu.id }}
+          </td>
+          <td>
+            {{menu.month}}
+          </td>
+          <td>
+            {{menu.year}}
+          </td>
+          <td>
+            {{menu.cost}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-4">
+    <ul class="pagination ">
+      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='menus'}}
+      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='menus'}}
+
+      {{#each count as |number|}}
+      {{#if (eq number model.meta.pagination.self.number)}}
+      <li class="page-item active">
+        {{link-to number 'menus' (query-params page=number) class="page-link"}}
+      </li>
+      {{else}}
+      <li class="page-item">
+        {{link-to number 'menus' (query-params page=number) class="page-link"}}
+      </li>
+      {{/if}}
+      {{/each}}
+
+      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='menus'}}
+      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number moveLink='menus'}}
+
+    </ul>
+  </div>
+</div>

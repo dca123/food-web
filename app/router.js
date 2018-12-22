@@ -12,7 +12,7 @@ Router.map(function() {
     this.route('view', { path: '/:meal_id/view'});
   });
   this.route('ingredients');
-  this.route('menu', function() {
+  this.route('menus', function() {
     this.route('new');
     this.route('view', { path: '/:week_id/view'});
   });
