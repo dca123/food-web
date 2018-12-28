@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+var underscore = Ember.String.underscore;
 
 export default DS.JSONAPISerializer.extend({
   normalizeQueryResponse(store, clazz, payload) {
@@ -6,11 +7,21 @@ export default DS.JSONAPISerializer.extend({
     result.meta = result.meta || {};
     if (payload.links) {
       result.meta.pagination = this.createPageMeta(payload.links);
+      if (result.meta.pagination.self.number == result.meta.pagination.first.number) {
+        delete result.meta.pagination['first'];
+      }
+      if (result.meta.pagination.self.number == result.meta.pagination.last.number) {
+        delete result.meta.pagination['last'];
+      }
     }
     return result;
   },
-  keyForAttribute(key) {
-    return key;
+  keyForAttribute: function(attr) {
+    return underscore(attr);
+  },
+
+  keyForRelationship: function(rawKey) {
+    return underscore(rawKey);
   },
   createPageMeta(data) {
 

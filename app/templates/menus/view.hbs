@@ -21,11 +21,11 @@
         </tr>
       </thead>
       <tbody>
-        {{#each mealTimes as |mealTime|}}
+        {{#each meal_times as |meal_time|}}
           <tr>
             {{#each daysOfWeek as |day|}}
               <td>
-                {{menu-day entries=model day=day mealTime=mealTime}}
+                {{menu-day entries=model day=day meal_time=meal_time}}
               </td>
             {{/each}}
           </tr>
