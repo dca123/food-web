@@ -1,14 +1,13 @@
 import Component from '@ember/component';
+import DS from 'ember-data';
 
 export default Component.extend({
-  meals: ['Meal1', 'Meal2', 'Meal3', 'Meal4'],
   selectedMeals: null,
-
   actions: {
     addMeal(selectedMeal) {
       let selectedMeals = this.get('selectedMeals');
-      selectedMeals.pushObject(selectedMeal);
-      this.sendAction('createMeal');
+      selectedMeals.pushObject(selectedMeal.name);
+      this.sendAction('createMeal', selectedMeal.id, this.get('mealTime'), this.get('dayOfWeek'));
     }
   },
   init() {

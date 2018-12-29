@@ -1,19 +1,21 @@
 <div class="row">
   <div class="col">
+    {{#if selectedMeals.length}}
     <div class="card">
       <ul class="list-group list-group-flush">
         {{#each selectedMeals as |meal|}}
-          <li class="list-group-item">{{meal}}</li>
+        <li class="list-group-item">{{meal}}</li>
         {{/each}}
       </ul>
-
     </div>
+    {{else}}
+    {{/if}}
   </div>
 </div>
 <div class="row mt-2">
   <div class="col">
-    {{#power-select options=meals onchange=(action "addMeal") as |meal|}}
-      {{meal}}
+    {{#power-select options=meals placeholder="Select a Meal" disabled=disableMenu onchange=(action "addMeal") as |meal|}}
+      {{meal.name}}
     {{/power-select}}
   </div>
 </div>

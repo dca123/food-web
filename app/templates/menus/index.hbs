@@ -4,7 +4,7 @@
   </div>
   <div class="col-3">
     {{#power-select options=months selected=monthDestination placeholder="Filter by Month" onchange=(action "changeMonth") as |month|}}
-    {{ month}}
+      {{month}}
     {{/power-select}}
   </div>
 </div>
@@ -29,20 +29,20 @@
       </thead>
       <tbody>
         {{#each model as |menu|}}
-        <tr>
-          <td>
-            {{link-to menu.week_of "menus.view" menu.id }}
-          </td>
-          <td>
-            {{menu.month}}
-          </td>
-          <td>
-            {{menu.year}}
-          </td>
-          <td>
-            {{menu.cost}}
-          </td>
-        </tr>
+          <tr>
+            <td>
+              {{link-to menu.week_of "menus.view" menu.id }}
+            </td>
+            <td>
+              {{menu.month}}
+            </td>
+            <td>
+              {{menu.year}}
+            </td>
+            <td>
+              {{menu.cost}}
+            </td>
+          </tr>
         {{/each}}
       </tbody>
     </table>
@@ -55,15 +55,15 @@
       {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='menus'}}
 
       {{#each count as |number|}}
-      {{#if (eq number model.meta.pagination.self.number)}}
-      <li class="page-item active">
-        {{link-to number 'menus' (query-params page=number) class="page-link"}}
-      </li>
-      {{else}}
-      <li class="page-item">
-        {{link-to number 'menus' (query-params page=number) class="page-link"}}
-      </li>
-      {{/if}}
+        {{#if (eq number model.meta.pagination.self.number)}}
+          <li class="page-item active">
+            {{link-to number 'menus' (query-params page=number) class="page-link"}}
+          </li>
+        {{else}}
+          <li class="page-item">
+            {{link-to number 'menus' (query-params page=number) class="page-link"}}
+          </li>
+        {{/if}}
       {{/each}}
 
       {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='menus'}}

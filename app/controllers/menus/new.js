@@ -1,37 +1,55 @@
 import Controller from '@ember/controller';
+import { empty } from '@ember/object/computed';
 
 export default Controller.extend({
   weekID: null,
+  weekDestination: null,
+  disableMealSelector: empty('weekDestination'),
   actions: {
-    createMeal() {
+    changeWeek(newWeek) {
+      this.set('weekDestination', newWeek.id);
+      if (newWeek.id) {
+        console.log('is next week');
+      }
+    },
+    createMeal(meal_id, mealTime, dayOfWeek) {
       let weekID = this.get('weekID');
-      let meal_rec = this.store.findRecord('meal', 1).then((myMeal) => {
+      let meal_rec = this.store.findRecord('meal', meal_id).then((myMeal) => {
         if (weekID) {
           let newWeek = this.store.peekRecord('week', weekID);
           let newMeal = this.store.createRecord('menu', {
             week: newWeek,
-            day: 'monday',
-            meal_time: 'lunch',
+            day: dayOfWeek,
+            meal_time: mealTime,
             meal: myMeal
           });
           newMeal.save().then(data => {
             console.log(data.get('id'));
           })
-
         } else {
+          let current = new Date();
+          let newWeekStart = null;
+          if (this.get('weekDestination')) {
+            let nextWeekstart = current.getDate() - current.getDay() + 8;
+            newWeekStart = new Date(current.setDate(nextWeekstart));
+          } else {
+            let weekstart = current.getDate() - current.getDay() + 1;
+            newWeekStart = new Date(current.setDate(weekstart));
+          }
           let newWeek = this.store.createRecord('week', {
-            week_of: 104,
-            month: 10,
+            week_of: newWeekStart.getDate(),
+            month: newWeekStart.getMonth() + 1,
             cost: 100,
-            year: 2018
+            year: newWeekStart.getFullYear()
           });
           newWeek.save().then(data => {
             this.set('weekID', data.get('id'));
+            this.set('weekSaved', true); //Disables week selecter
             console.log(this.get('weekID'));
             let newMeal = this.store.createRecord('menu', {
               week: newWeek,
-              day: 'monday',
-              meal_time: 'lunch',
+              day: dayOfWeek,
+              meal_time: mealTime,
               meal: myMeal
             });
             newMeal.save().then(data => {
