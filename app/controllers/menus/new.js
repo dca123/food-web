@@ -8,9 +8,6 @@ export default Controller.extend({
   actions: {
     changeWeek(newWeek) {
       this.set('weekDestination', newWeek.id);
-      if (newWeek.id) {
-        console.log('is next week');
-      }
     },
     createMeal(meal_id, mealTime, dayOfWeek) {
       let weekID = this.get('weekID');
@@ -23,9 +20,7 @@ export default Controller.extend({
             meal_time: mealTime,
             meal: myMeal
           });
-          newMeal.save().then(data => {
-            console.log(data.get('id'));
-          })
+          newMeal.save();
         } else {
           let current = new Date();
           let newWeekStart = null;
@@ -45,20 +40,16 @@ export default Controller.extend({
           newWeek.save().then(data => {
             this.set('weekID', data.get('id'));
             this.set('weekSaved', true); //Disables week selecter
-            console.log(this.get('weekID'));
             let newMeal = this.store.createRecord('menu', {
               week: newWeek,
               day: dayOfWeek,
               meal_time: mealTime,
               meal: myMeal
             });
-            newMeal.save().then(data => {
-              console.log(data.get('id'));
-            })
+            newMeal.save();
           })
         }
       });
-      console.log(weekID);
     }
   }
 });

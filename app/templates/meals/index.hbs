@@ -1,6 +1,10 @@
 <div class="row pt-4 pb-2 justify-content-end">
   <div class="col">
-    <h2>Meal List</h2>
+    <h2>Meal List
+      {{#if (not model)}}
+        <span class="badge badge-warning">No Meals Found !</span>
+      {{/if}}
+    </h2>
   </div>
   <div class="col-3">
     {{#power-select options=names selected=category placeholder="Filter Meal Type" onchange=(action "changeCategory") as |name|}}

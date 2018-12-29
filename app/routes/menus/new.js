@@ -22,12 +22,6 @@ export default Route.extend({
     controller.set('weeks', [{id:0, value:`This Week - ${mondayString}` },{id:1, value:`Next Week - ${nextMondayString}` }])
   },
   deactivate(){
-    console.log('test');
     this.controllerFor('menus.new').set('weekDestination', null);
-  },
-  actions: {
-    createMenu(newMenu) {
-      console.log(newMenu);
-    }
   }
 });

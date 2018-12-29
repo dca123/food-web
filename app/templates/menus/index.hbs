@@ -1,10 +1,19 @@
 <div class="row pt-4 pb-2 justify-content-end">
   <div class="col">
-    <h2>Menu List</h2>
+    <h2>Menu List
+      {{#if (not model)}}
+        <span class="badge badge-warning">No Menus Found !</span>
+      {{/if}}
+    </h2>
   </div>
   <div class="col-3">
     {{#power-select options=months selected=monthDestination placeholder="Filter by Month" onchange=(action "changeMonth") as |month|}}
       {{month}}
+    {{/power-select}}
+  </div>
+  <div class="col-3">
+    {{#power-select options=years selected=yearDestination placeholder="Filter by Year" onchange=(action "changeYear") as |year|}}
+      {{year}}
     {{/power-select}}
   </div>
 </div>

@@ -7,7 +7,8 @@ export default Route.extend({
         number: params.page,
         size: params.size
       },
-      month: params.monthDestination
+      month: params.monthDestination,
+      year: params.yearDestination
     });
   },
   queryParams:{
@@ -19,6 +20,16 @@ export default Route.extend({
     },
     monthDestination:{
       refreshModel: true
+    },
+    yearDestination:{
+      refreshModel: true
     }
+  },
+  ajax: Ember.inject.service(),
+  setupController(controller, model){
+    this._super(controller, model);
+    this.get('ajax').request('/year_list').then((data) => {
+      controller.set('years', data);
+    })
   }
 });
