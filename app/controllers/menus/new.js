@@ -22,7 +22,7 @@ export default Controller.extend({
     },
     createMeal(meal_id, mealTime, dayOfWeek) {
       let weekID = this.get('weekID');
-      let meal_rec = this.store.findRecord('meal', meal_id).then((myMeal) => {
+      this.store.findRecord('meal', meal_id).then((myMeal) => {
         if (weekID) {
           let newWeek = this.store.peekRecord('week', weekID);
           let newMeal = this.store.createRecord('menu', {
