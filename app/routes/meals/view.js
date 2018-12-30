@@ -6,6 +6,5 @@ export default Route.extend({
   },
   afterModel(model) {
     return model.get('recipes')
-    // return Ember.RSVP.all(promises);
   }
 });

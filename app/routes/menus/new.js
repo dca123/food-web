@@ -1,14 +1,11 @@
 import Route from '@ember/routing/route';
 
 export default Route.extend({
-  ajax: Ember.inject.service(),
   setupController(controller, model) {
     this._super(controller, model);
     controller.set('daysOfWeek', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'])
     controller.set('meal_times', ['lunch', 'dinner'])
-    this.get('ajax').request('/meal_list').then((data) => {
-      controller.set('mealList', data);
-    })
+
     let current = new Date();
     let weekstart = current.getDate() - current.getDay() + 1;
     let nextWeekstart = current.getDate() - current.getDay() + 8;

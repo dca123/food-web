@@ -24,12 +24,5 @@ export default Route.extend({
     yearDestination:{
       refreshModel: true
     }
-  },
-  ajax: Ember.inject.service(),
-  setupController(controller, model){
-    this._super(controller, model);
-    this.get('ajax').request('/year_list').then((data) => {
-      controller.set('years', data);
-    })
   }
 });

@@ -1,7 +1,13 @@
 import Component from '@ember/component';
 import DS from 'ember-data';
+import {
+  computed
+} from '@ember/object';
 
 export default Component.extend({
+  meals: computed('mealArray', function() {
+    return this.get('mealArray')
+  }),
   selectedMeals: null,
   actions: {
     addMeal(selectedMeal) {

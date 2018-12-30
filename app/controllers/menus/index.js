@@ -1,6 +1,13 @@
 import Controller from '@ember/controller';
+import {
+  inject as service
+} from '@ember/service';
+import {
+  computed
+} from '@ember/object';
 
 export default Controller.extend({
+  yearList: service(),
   queryParams: ['page', 'size', {
     monthDestination: 'month'
   }, {
@@ -8,10 +15,13 @@ export default Controller.extend({
   }],
   page: 1,
   size: 10,
+  years: computed('yearList.years', function() {
+    return this.get('yearList.years');
+  }),
   monthDestination: null,
   yearDestination: null,
   months: ['All', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-  count: Ember.computed('model.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {
+  count:  computed('model.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {
     const total = this.get('model.meta.pagination.last.number') || this.get('model.meta.pagination.self.number');
     if (!total) return [];
     return new Array(total).fill().map((item, index) => index + 1);
