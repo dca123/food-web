@@ -1,5 +1,6 @@
+import  Ember from 'ember';
 import Controller from '@ember/controller';
-import { empty } from '@ember/object/computed';
+import { empty, filter } from '@ember/object/computed';
 import {
   inject as service
 } from '@ember/service';
@@ -20,7 +21,17 @@ export default Controller.extend({
     changeWeek(newWeek) {
       this.set('weekDestination', newWeek.id);
     },
-    createMeal(meal_id, mealTime, dayOfWeek) {
+    removeMeal(meal_id, mealTime, dayOfWeek){
+      this.store.query('menu', {
+        week_id: this.get('weekID'),
+        meal_id: meal_id,
+        meal_time: mealTime,
+        day: dayOfWeek
+      }).then((menus) => {
+        menus.get('firstObject').destroyRecord();
+      });
+    },
+    createMeal(meal_id, mealTime, dayOfWeek, mealID) {
       let weekID = this.get('weekID');
       this.store.findRecord('meal', meal_id).then((myMeal) => {
         if (weekID) {

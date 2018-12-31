@@ -3,13 +3,8 @@
     {{#each filteredResults as |result|}}
       <li class="list-group-item">
         <div class="row">
-          <div class="col-10">
+          <div class="col">
             {{link-to result.meal.name 'meals.view' result.meal.id}}
-          </div>
-          <div class="col-2">
-            <button type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
           </div>
         </div>
       </li>

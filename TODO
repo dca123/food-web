@@ -1,2 +1,4 @@
 //Add popover for disabled buttons
-//limit size of pagination numbers
+//COMPLETED - limit size of pagination numbers
+//Deal with creating a menu when half created
+//Deal with adding duplicate items in the menu

@@ -3,8 +3,19 @@
     {{#if selectedMeals.length}}
     <div class="card">
       <ul class="list-group list-group-flush">
-        {{#each selectedMeals as |meal|}}
-        <li class="list-group-item">{{meal}}</li>
+        {{#each selectedMeals as |meal index|}}
+        <li class="list-group-item">
+          <div class="row">
+            <div class="col-10">
+              {{meal.name}}
+            </div>
+            <div class="col-2">
+              <button type="button" class="close" {{action "removeMeal" meal.id index mealTime dayOfWeek}} aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </li>
         {{/each}}
       </ul>
     </div>
