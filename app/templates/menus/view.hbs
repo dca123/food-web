@@ -1,6 +1,11 @@
-<div class="row pt-4 pb-2">
-  <div class="col">
+<div class="row pt-4 pb-2 justify-content-between">
+  <div class="col-4">
     <h2>Menu for Week of {{title}}</h2>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
+      {{if isEditing "View Mode" "Edit Mode"}}
+    </button>
   </div>
 </div>
 <div class="row">
@@ -30,7 +35,8 @@
           <tr>
             {{#each daysOfWeek as |day|}}
               <td>
-                {{menu-day entries=model day=day meal_time=meal_time}}
+                {{menu-day entries=model day=day meal_time=meal_time isEditing=isEditing
+                  mealArray=meals weekModel=weekModel}}
               </td>
             {{/each}}
           </tr>

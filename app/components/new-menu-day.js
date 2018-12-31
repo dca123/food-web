@@ -5,24 +5,74 @@ import {
 } from '@ember/object';
 
 export default Component.extend({
+  store: Ember.inject.service(),
   meals: computed('mealArray', function() {
     return this.get('mealArray')
   }),
-  selectedMeals: null,
+  selectedMenus: null,
   actions: {
     addMeal(selectedMeal) {
-      let selectedMeals = this.get('selectedMeals');
-      selectedMeals.pushObject({name: selectedMeal.name, id: selectedMeal.id});
-      this.sendAction('createMeal', selectedMeal.id, this.get('mealTime'), this.get('dayOfWeek'));
+      let selectedMenus = this.get('selectedMenus');
+      let meal_id = selectedMeal.id;
+
+      this.get('store').findRecord('meal', meal_id).then((myMeal) => {
+        if (this.get('weekModel')) {
+          let newMeal = this.get('store').createRecord('menu', {
+            week: this.get('weekModel'),
+            day: this.get('dayOfWeek'),
+            meal_time: this.get('mealTime'),
+            meal: myMeal
+          });
+          newMeal.save().then((data) => {
+            selectedMenus.pushObject(data);
+          });
+        } else {
+          let current = new Date();
+          let newWeekStart = null;
+
+          if (this.get('weekDestination')) {
+            let nextWeekstart = current.getDate() - current.getDay() + 8;
+            newWeekStart = new Date(current.setDate(nextWeekstart));
+          } else {
+            let weekstart = current.getDate() - current.getDay() + 1;
+            newWeekStart = new Date(current.setDate(weekstart));
+          }
+
+          let newWeek = this.get('store').createRecord('week', {
+            week_of: newWeekStart.getDate(),
+            month: newWeekStart.getMonth() + 1,
+            cost: 100,
+            year: newWeekStart.getFullYear()
+          });
+
+          newWeek.save().then((data) => {
+            this.set('weekModel', data);
+            this.set('weekSaved', true); //Disables week selecter
+
+            let newMeal = this.get('store').createRecord('menu', {
+              week: data,
+              day: this.get('dayOfWeek'),
+              meal_time: this.get('mealTime'),
+              meal: myMeal
+            });
+
+            newMeal.save().then((data) => {
+              selectedMenus.pushObject(data);
+            });
+          })
+        }
+      });
     },
-    removeMeal(meal_id, index, mealTime, dayOfWeek){
-      let selectedMeals = this.get('selectedMeals');
-      selectedMeals.removeAt(index);
-      this.sendAction('removeMeal', meal_id, mealTime, dayOfWeek);
+    removeMeal(menu_id, index) {
+      let selectedMenus = this.get('selectedMenus');
+      let menu = this.get('store').peekRecord('menu', menu_id);
+      menu.destroyRecord().then((data) => {
+        selectedMenus.removeAt(index);
+      });
     }
   },
   init() {
     this._super(...arguments);
-    this.set("selectedMeals", []);
+    this.set("selectedMenus", []);
   }
 });

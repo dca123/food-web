@@ -35,8 +35,8 @@
           <tr>
             {{#each daysOfWeek as |day|}}
               <td>
-                {{new-menu-day createMeal="createMeal" removeMeal="removeMeal"
-                  disableMenu=disableMealSelector mealTime=meal_time dayOfWeek=day mealArray=meals}}
+                {{new-menu-day removeMeal="removeMeal" weekDestination=weekDestination weekModel=weekModel
+                  disableMenu=disableMealSelector mealTime=meal_time dayOfWeek=day mealArray=meals weekSaved=weekSaved}}
               </td>
             {{/each}}
           </tr>

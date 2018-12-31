@@ -1,13 +1,29 @@
 <div class="card">
   <ul class="list-group list-group-flush">
-    {{#each filteredResults as |result|}}
+    {{#each filteredResults as |result index|}}
       <li class="list-group-item">
         <div class="row">
-          <div class="col">
+          <div class="col-10">
             {{link-to result.meal.name 'meals.view' result.meal.id}}
           </div>
+          {{#if isEditing}}
+            <div class="col-2">
+              <button type="button" class="close" {{action "removeMeal" result.id index}} aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          {{/if}}
         </div>
       </li>
     {{/each}}
   </ul>
 </div>
+{{#if isEditing}}
+  <div class="row mt-2">
+    <div class="col">
+      {{#power-select options=meals placeholder="Select a Meal" disabled=disableMenu onchange=(action "addMeal") as |meal|}}
+        {{meal.name}}
+      {{/power-select}}
+    </div>
+  </div>
+{{/if}}

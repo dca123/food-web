@@ -10,7 +10,7 @@ module.exports = function(defaults) {
       'importBootstrapCSS': false
     },
     'ember-composable-helpers': {
-      only: ['find-by'],
+      only: ['find-by', 'toggle'],
     }
   });
 
