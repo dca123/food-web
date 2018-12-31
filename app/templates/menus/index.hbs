@@ -22,16 +22,16 @@
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">
+          <th scope="col" style="width: 25%">
             Week Of
           </th>
-          <th scope="col">
+          <th scope="col" style="width: 25%">
             Month
           </th>
-          <th scope="col">
+          <th scope="col" style="width: 25%">
             Year
           </th>
-          <th scope="col">
+          <th scope="col" style="width: 25%">
             Cost
           </th>
         </tr>
@@ -58,7 +58,7 @@
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-4">
+  <div class="col-5">
     <ul class="pagination ">
       {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='menus'}}
       {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='menus'}}
