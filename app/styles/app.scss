@@ -5,6 +5,7 @@ body {
 $body-bg: #ffffff;
 $primary: #6f2c91;
 $secondary: #ffd700;
+$primary-color: $primary;
 
 $container-max-widths: (
   // sm: 540px,
@@ -16,3 +17,4 @@ $container-max-widths: (
 @import "ember-bootstrap/bootstrap";
 @import "ember-power-select/themes/bootstrap";
 @import "ember-power-select";
+@import "ember-cli-loaders/loaders";

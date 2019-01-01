@@ -1,0 +1,30 @@
+<div class="row pt-4">
+  <div class="col">
+    <h2>Shopping List for the Week of {{model.week_of}}/{{model.month}}</h2>
+  </div>
+</div>
+<hr>
+{{#if shoppingList}}
+  <div class="row pt-4">
+    {{#each-in shoppingList as |location list|}}
+      <div class="col">
+        <div class="card">
+          <div class="card-header">
+            <strong>{{capitalize location}}</strong>
+          </div>
+          <ul class="list-group list-group-flush">
+            {{#each-in list as |item data|}}
+              <li class="list-group-item">{{capitalize item}} - {{pluralize data.quantity data.measure}}</li>
+            {{/each-in}}
+          </ul>
+        </div>
+      </div>
+    {{/each-in}}
+  </div>
+{{else}}
+  <div class="row justify-content-center">
+    <div class="col-1">
+      {{loader-ball-grid-pulse}}
+    </div>
+  </div>
+{{/if}}

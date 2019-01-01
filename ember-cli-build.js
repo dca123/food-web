@@ -10,7 +10,10 @@ module.exports = function(defaults) {
       'importBootstrapCSS': false
     },
     'ember-composable-helpers': {
-      only: ['find-by', 'toggle'],
+      only: ['find-by', 'toggle', 'compute'],
+    },
+    'ember-cli-string-helpers': {
+      only: ['capitalize'],
     }
   });
 
