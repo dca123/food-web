@@ -1,32 +1,48 @@
-<br />
-<h2 class="text-primary">Ingredients for <i>{{model.name}}</i></h2>
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">
-        Name
-      </th>
-      <th scope="col">
-        Quantity
-      </th>
-      <th scope="col">
-        Measure
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each model.recipes as |recipe|}}
-      <tr>
-        <td>
-          {{recipe.ingredient.name}}
-        </td>
-        <td>
-          {{recipe.quantity}}
-        </td>
-        <td>
-          {{recipe.measure}}
-        </td>
-      </tr>
-    {{/each}}
-  </tbody>
-</table>
+<div class="row pt-4">
+  <div class="col">
+    <h2 class="text-primary">Ingredients for <i>{{model.name}}</i></h2>
+  </div>
+</div>
+<hr>
+{{#unless model.recipes.isPending}}
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">
+              Name
+            </th>
+            <th scope="col">
+              Quantity
+            </th>
+            <th scope="col">
+              Measure
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.recipes as |recipe|}}
+            <tr>
+              <td>
+                {{recipe.ingredient.name}}
+              </td>
+              <td>
+                {{recipe.quantity}}
+              </td>
+              <td>
+                {{recipe.measure}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{{else}}
+  <div class="row justify-content-center">
+    <div class="col-1">
+      {{loader-ball-grid-pulse}}
+    </div>
+  </div>
+{{/unless}}

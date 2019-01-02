@@ -26,6 +26,11 @@ export default Component.extend({
           });
           newMeal.save().then((data) => {
             selectedMeals.pushObject(data);
+          }, (data) => {
+            this.toast.error('Cannot add duplicate meals !', '', {
+              progressBar: false,
+              closeButton: false,
+            });
           });
         }
       });

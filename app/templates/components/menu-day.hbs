@@ -4,7 +4,11 @@
       <li class="list-group-item">
         <div class="row">
           <div class="col-10">
-            {{link-to result.meal.name 'meals.view' result.meal.id}}
+            {{#if isEditing}}
+              {{result.meal.name}}
+            {{else}}
+              {{link-to result.meal.name 'meals.view' result.meal.id}}
+            {{/if}}
           </div>
           {{#if isEditing}}
             <div class="col-2">

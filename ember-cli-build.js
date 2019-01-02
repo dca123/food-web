@@ -14,6 +14,10 @@ module.exports = function(defaults) {
     },
     'ember-cli-string-helpers': {
       only: ['capitalize'],
+    },
+    'ember-font-awesome': {
+      removeUnusedIcons: EmberApp.env() === 'production',
+      useScss: true, // for ember-cli-sass
     }
   });
 
