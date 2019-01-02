@@ -1,0 +1,14 @@
+{{#bs-modal open=duplicateModel onSubmit=(action "viewTransition" errorMessage.[1]) onHidden=(action (mut duplicateModel) false) as |modal|}}
+  {{#modal.header}}
+    <h4 class="modal-title">
+      Duplicate Week
+    </h4>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{errorMessage.[0]}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#bs-button type="danger" onClick=(action modal.close)}}Cancel{{/bs-button}}
+    {{#bs-button type="success" onClick=(action modal.submit)}}Edit Week{{/bs-button}}
+  {{/modal.footer}}
+{{/bs-modal}}

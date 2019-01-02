@@ -6,15 +6,19 @@ export default Route.extend({
     controller.set('daysOfWeek', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'])
     controller.set('meal_times', ['lunch', 'dinner'])
 
-    let current = new Date();
+    const current = new Date();
+    const current2 = new Date();
     let weekstart = current.getDate() - current.getDay() + 1;
-    let nextWeekstart = current.getDate() - current.getDay() + 8;
+    let nextWeekstart = current2.getDate() - current2.getDay() + 8;
 
     let thisMonday = new Date(current.setDate(weekstart));
-    let nextMonday = new Date(current.setDate(nextWeekstart));
+    let nextMonday = new Date(current2.setDate(nextWeekstart));
 
-    let mondayString = `${thisMonday.getMonth() + 1}/${thisMonday.getDate()}`
-    let nextMondayString = `${nextMonday.getMonth() + 1}/${nextMonday.getDate()}`
+    let thisMonth = thisMonday.getMonth() + 1
+    let nextMonth = nextMonday.getMonth() + 1
+
+    let mondayString = `${thisMonth}/${thisMonday.getDate()}`
+    let nextMondayString = `${nextMonth}/${nextMonday.getDate()}`
 
     controller.set('weeks', [{id:0, value:`This Week - ${mondayString}` },{id:1, value:`Next Week - ${nextMondayString}` }])
   },

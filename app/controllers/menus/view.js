@@ -7,6 +7,7 @@ import {
 } from '@ember/service';
 
 export default Controller.extend({
+  queryParams: ['isEditing'],
   isEditing: false,
   editText: 'Edit Mode',
   mealList: service(),

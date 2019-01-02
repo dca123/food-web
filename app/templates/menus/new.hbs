@@ -7,6 +7,9 @@
       {{week.value}}
     {{/power-select}}
   </div>
+  <div class="col">
+    {{link-to "Compute Shopping List" "menus.list" 1 class="btn float-right btn-lg d-print-none btn-outline-primary" disabled=true}}
+  </div>
 </div>
 <div class="row">
   <div class="col">
@@ -35,7 +38,7 @@
           <tr>
             {{#each daysOfWeek as |day|}}
               <td>
-                {{new-menu-day removeMeal="removeMeal" weekDestination=weekDestination weekModel=weekModel
+                {{new-menu-day openDuplicateModel="openDuplicateModel" viewTransition="viewTransition" weekDestination=weekDestination weekModel=weekModel
                   disableMenu=disableMealSelector mealTime=meal_time dayOfWeek=day mealArray=meals weekSaved=weekSaved}}
               </td>
             {{/each}}
@@ -45,3 +48,4 @@
     </table>
   </div>
 </div>
+{{new-menu-redirection duplicateModel=duplicateModel errorMessage=errorMessage viewTransition="viewTransition"}}

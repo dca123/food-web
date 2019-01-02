@@ -10,6 +10,7 @@ import {
 
 
 export default Controller.extend({
+  store: service(),
   weekSaved: false,
   weekModel: null,
   weekDestination: null,
@@ -21,6 +22,17 @@ export default Controller.extend({
   actions: {
     changeWeek(newWeek) {
       this.set('weekDestination', newWeek.id);
+    },
+    viewTransition(id){
+      this.transitionToRoute('menus.view', id, {
+        queryParams: {
+          isEditing: true
+        }
+      });
+    },
+    openDuplicateModel(data){
+      this.set('errorMessage', data);
+      this.set('duplicateModel', true)
     }
   }
 });

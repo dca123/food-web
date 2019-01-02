@@ -3,9 +3,13 @@ import DS from 'ember-data';
 import {
   computed
 } from '@ember/object';
+import {
+  inject as service
+} from '@ember/service';
 
 export default Component.extend({
-  store: Ember.inject.service(),
+  router: service(),
+  store: service(),
   meals: computed('mealArray', function() {
     return this.get('mealArray')
   }),
@@ -25,6 +29,11 @@ export default Component.extend({
           });
           newMeal.save().then((data) => {
             selectedMenus.pushObject(data);
+          }, (data) => {
+            this.toast.error('Cannot add duplicate meals !', '', {
+              progressBar: false,
+              closeButton: false,
+            });
           });
         } else {
           let current = new Date();
@@ -37,7 +46,6 @@ export default Component.extend({
             let weekstart = current.getDate() - current.getDay() + 1;
             newWeekStart = new Date(current.setDate(weekstart));
           }
-
           let newWeek = this.get('store').createRecord('week', {
             week_of: newWeekStart.getDate(),
             month: newWeekStart.getMonth() + 1,
@@ -58,8 +66,19 @@ export default Component.extend({
 
             newMeal.save().then((data) => {
               selectedMenus.pushObject(data);
+            }, (data) => {
+              this.toast.error('Cannot add duplicate meals !', '', {
+                progressBar: false,
+                closeButton: false,
+              });
             });
-          })
+          }, (data) => {
+            let errors = data.errors;
+            let errorMessage = [];
+            errorMessage[0] = `${errors[0]['week_of']}`
+            errorMessage[1] = errors[1]['week_id']
+            this.sendAction('openDuplicateModel', errorMessage);
+          });
         }
       });
     },
