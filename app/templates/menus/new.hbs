@@ -8,7 +8,14 @@
     {{/power-select}}
   </div>
   <div class="col">
-    {{link-to "Compute Shopping List" "menus.list" 1 class="btn float-right btn-lg d-print-none btn-outline-primary" disabled=true}}
+    <span class="d-inline-flex float-right" tabindex="0">
+      {{#unless weekModel}}
+        {{bs-tooltip title="Create the Menu first !" placement="right"}}
+      {{/unless}}
+      {{#link-to "menus.list" weekModel.id classNames="btn btn-lg d-print-none btn-outline-primary" class=(if (not weekModel) 'disabled')}}
+        Shopping List
+      {{/link-to}}
+    </span>
   </div>
 </div>
 <div class="row">

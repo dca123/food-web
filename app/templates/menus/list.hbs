@@ -2,7 +2,7 @@
   <div class="col">
     <h2>Shopping List for the
       {{#link-to "menus.view" model.id}}
-      Week of {{model.week_of}}/{{model.month}}
+        Week of {{model.week_of}}/{{model.month}}
       {{/link-to}}
     </h2>
   </div>
@@ -18,7 +18,15 @@
           </div>
           <ul class="list-group list-group-flush">
             {{#each-in list as |item data|}}
-              <li class="list-group-item">{{capitalize item}} - {{pluralize data.quantity data.measure}}</li>
+              <li class="list-group-item">{{capitalize item}}
+                <ul>
+                  {{#each data as |measu|}}
+                    <li>
+                      {{pluralize measu.quantity measu.measure}}
+                    </li>
+                  {{/each}}
+                </ul>
+              </li>
             {{/each-in}}
           </ul>
         </div>

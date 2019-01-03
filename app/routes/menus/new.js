@@ -23,6 +23,11 @@ export default Route.extend({
     controller.set('weeks', [{id:0, value:`This Week - ${mondayString}` },{id:1, value:`Next Week - ${nextMondayString}` }])
   },
   deactivate(){
-    this.controllerFor('menus.new').set('weekDestination', null);
+  },
+  actions: {
+    willTransition(transition){
+      this.controllerFor('menus.new').set('weekDestination', null);
+      this.controllerFor('menus.new').set('weekSaved', false);
+    }
   }
 });

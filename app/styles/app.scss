@@ -1,13 +1,12 @@
 body {
   padding-top: 20px;
+  padding-bottom: 100px;
 }
-
 $body-bg: #ffffff;
 $primary: #6f2c91;
 $secondary: #ffd700;
 $primary-color: $primary;
 $ember-power-select-line-height: 2.5;
-
 $container-max-widths: (
   // sm: 540px,
   // md: 720px,
@@ -15,6 +14,10 @@ $container-max-widths: (
   xl: 1200px
 );
 
+a.btn.disabled {
+  color: #A9A9A9 !important;
+  border-color: #A9A9A9 !important;
+}
 
 #toast-container > .toast:before {
   position: fixed;
@@ -27,16 +30,18 @@ $container-max-widths: (
   margin: auto 0.5em auto -1.5em;
 }
 
-
 #toast-container > .toast-warning:before {
   content: "\f003";
 }
+
 #toast-container > .toast-error:before {
   content: "\f00d";
 }
+
 #toast-container > .toast-info:before {
   content: "\f005";
 }
+
 #toast-container > .toast-success:before {
   content: "\f002";
 }
@@ -45,7 +50,6 @@ $container-max-widths: (
 @import "ember-power-select";
 @import "ember-cli-loaders/loaders";
 @import "font-awesome";
-
 
 #toast-container > .toast {
   background-image: none !important;

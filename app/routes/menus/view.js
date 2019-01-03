@@ -10,7 +10,7 @@ export default Route.extend({
     this._super(controller, model);
     controller.set('daysOfWeek', ['monday', 'tuesday', 'wednesday', 'thursday', 'friday'])
     controller.set('meal_times', ['lunch', 'dinner'])
-    model.objectAt(1).get('week').then((data) => {
+    model.objectAt(0).get('week').then((data) => {
       controller.set('title', `${data.get('month')}/${data.get('week_of')}`)
       controller.set('weekModel', data);
     });
