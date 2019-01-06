@@ -4,8 +4,11 @@
       {{#nav.item}}
         {{#nav.link-to "meals.index"}}List All{{/nav.link-to}}
       {{/nav.item}}
+      {{#nav.item}}
+        {{#nav.link-to "meals.new"}}Create Meal{{/nav.link-to}}
+      {{/nav.item}}
     {{/navbar.nav}}
   {{/navbar.content}}
 {{/bs-navbar}}
-
+<hr>
 {{outlet}}

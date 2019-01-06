@@ -1,1 +1,6 @@
-{{outlet}}
+{{#if isMealSaved}}
+  {{new-meal/add-ingredient model=model}}
+{{else}}
+  {{new-meal/add-meal categories=categories addMeal="addMeal"
+  createIngredient="createIngredient" model=model isMealSaved=isMealSaved ingredients=ingredients}}
+{{/if}}

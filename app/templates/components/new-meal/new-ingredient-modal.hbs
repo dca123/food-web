@@ -1,0 +1,16 @@
+{{#bs-modal open=newIngredientOpen onSubmit=(action "createIngredient") onHidden=(action (mut newIngredientOpen) false) as |modal|}}
+  {{#modal.header}}
+    <h4 class="modal-title">
+      Creating {{ingredient_name}}
+    </h4>
+  {{/modal.header}}
+  {{#modal.body}}
+    {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=selectedLocation onchange=(action "selectIngredient") as |loc|}}
+      {{capitalize loc}}
+    {{/power-select}}
+  {{/modal.body}}
+  {{#modal.footer}}
+    {{#bs-button type="warning" onClick=(action modal.close)}}Cancel{{/bs-button}}
+    {{#bs-button type="primary" onClick=(action modal.submit) disabled=isDisabled}}Create{{/bs-button}}
+  {{/modal.footer}}
+{{/bs-modal}}

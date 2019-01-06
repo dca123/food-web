@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col">
+    <h2 class="text-primary">Ingredients for <i>{{model.name}}</i></h2>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-5">
+    <div class="card">
+      <ul class="list-group list-group-flush">
+        {{#each recipes as |recipe|}}
+          <li class="list-group-item">{{recipe.ingredient}}  {{recipe.quantity}} {{recipe.measure}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Ingredient Name</label>
+              {{#power-select-typeahead
+                  search=(action 'searchAsync')
+                  options=filteredIngredients
+                  selected=selectedIngredient.name
+                  onchange=(action "selectIngredient")
+                  oninput=(action "preventSearchesBelowThreeChars")
+                   as |ingredient|
+              }}
+                {{ingredient.name}}
+              {{/power-select-typeahead}}
+              <small class="form-text text-muted">Type in the ingredient, if it doesn't exist, click create !</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Quantity</label>
+              {{input class="form-control" value=quantity}}
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="exampleFormControlSelect2">Unit</label>
+              {{input class="form-control" value=measure}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-outline-primary text-center float-right" {{action "createRecipe"}}>Add Ingredient</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{new-meal/new-ingredient-modal ingredient_name=ingredient_name newIngredientOpen=newIngredientOpen createIngredient="createIngredient"}}

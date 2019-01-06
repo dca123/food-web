@@ -1,4 +1,4 @@
-<div class="row pt-4 pb-2 justify-content-end">
+<div class="row pb-2 justify-content-end">
   <div class="col">
     <h2>Menu List
       {{#if (not model)}}
@@ -40,7 +40,7 @@
         {{#each model as |menu|}}
           <tr>
             <td>
-              {{link-to menu.week_of "menus.view" menu.id }}
+              {{link-to menu.week_of "menus.view" menu.id class="d-block"}}
             </td>
             <td>
               {{menu.month}}
@@ -58,7 +58,7 @@
   </div>
 </div>
 <div class="row justify-content-center">
-  <div class="col-5">
+  <div class="col-4">
     <ul class="pagination ">
       {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='menus'}}
       {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='menus'}}

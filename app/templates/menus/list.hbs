@@ -1,4 +1,4 @@
-<div class="row pt-4">
+<div class="row">
   <div class="col">
     <h2>Shopping List for the
       {{#link-to "menus.view" model.id}}
@@ -7,7 +7,7 @@
     </h2>
   </div>
 </div>
-<hr>
+<!-- <hr> -->
 {{#if shoppingList}}
   <div class="row pt-4">
     {{#each-in shoppingList as |location list|}}

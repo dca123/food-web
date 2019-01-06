@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <div class="col-7">
+        <label class="text-primary">Meal Name
+        </label>
+        {{input value=model.name type="text" class="form-control" disabled=isMealSaved}}
+      </div>
+      <div class="col-3">
+        <label class="text-primary">Category</label>
+        {{#power-select triggerClass="form-control" options=categories selected=model.category disabled=isMealSaved onchange=(action (mut model.category)) as |name|}}
+          {{capitalize name}}
+        {{/power-select}}
+      </div>
+      <div class="col-2">
+        <label class="text-primary">Serves
+        </label>
+        {{input value=model.serves type="text" class="form-control" type="number" min="1"
+        disabled=isMealSaved}}
+      </div>
+    </div>
+    <div class="row pt-3">
+      <div class="col">
+        <div class="form-group">
+          <label>Notes</label>
+          {{textarea class="form-control" value=model.notes rows="3" disabled=isMealSaved}}
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-3">
+        <button class="btn btn-outline-primary text-center" {{action "addMeal" model}}>Start Adding Ingredients !</button>
+      </div>
+    </div>
+  </div>
+</div>

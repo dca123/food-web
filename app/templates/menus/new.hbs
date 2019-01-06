@@ -1,9 +1,9 @@
-<div class="row pt-4 pb-2">
+<div class="row pb-2">
   <div class="col-3">
     <h2>Create Menu for</h2>
   </div>
   <div class="col-4">
-    {{#power-select options=weeks disabled=weekSaved selected=(find-by 'id' weekDestination weeks)  placeholder="Select a Week" onchange=(action "changeWeek") as |week|}}
+    {{#power-select options=weeks searchField="value" disabled=weekSaved selected=(find-by 'id' weekDestination weeks)  placeholder="Select a Week" onchange=(action "changeWeek") as |week|}}
       {{week.value}}
     {{/power-select}}
   </div>

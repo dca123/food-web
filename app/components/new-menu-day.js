@@ -8,7 +8,6 @@ import {
 } from '@ember/service';
 
 export default Component.extend({
-  router: service(),
   store: service(),
   meals: computed('mealArray', function() {
     return this.get('mealArray')

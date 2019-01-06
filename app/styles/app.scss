@@ -6,13 +6,22 @@ $body-bg: #ffffff;
 $primary: #6f2c91;
 $secondary: #ffd700;
 $primary-color: $primary;
-$ember-power-select-line-height: 2.5;
+$ember-power-select-focus-border-color: $primary;
+
+.custom {
+  line-height: 2.5 !important;
+  max-height: 2.5em !important;
+}
 $container-max-widths: (
   // sm: 540px,
   // md: 720px,
   // lg: 1200px,
   xl: 1200px
 );
+
+.ember-power-select-typeahead-input {
+  // position: relative !important;
+}
 
 a.btn.disabled {
   color: #A9A9A9 !important;
@@ -48,6 +57,7 @@ a.btn.disabled {
 @import "ember-bootstrap/bootstrap";
 @import "ember-power-select/themes/bootstrap";
 @import "ember-power-select";
+@import 'ember-power-select-typeahead';
 @import "ember-cli-loaders/loaders";
 @import "font-awesome";
 
