@@ -13,12 +13,16 @@ export default Component.extend({
   measure: null,
   ingredientModel: null,
   ingredientList: service(),
+  measureList: service(),
   ingredients: computed('ingredientList.ingredients', function() {
     return this.get('ingredientList.ingredients');
   }),
+  measurements: computed('measureList.measurements', function() {
+    return this.get('measureList.measurements');
+  }),
   init() {
     this._super(...arguments);
-    this.set('recipes', [{ingredient: 'cat', quantity: 2, measure: 'cup'}]);
+    this.set('recipes', []);
     this.set('filteredIngredients', this.get('ingredients'))
   },
   actions: {
@@ -39,7 +43,6 @@ export default Component.extend({
         };
         let recipes = this.get('recipes')
         recipes.pushObject(recipe);
-        console.log('recipe Saved');
       });
     },
     selectIngredient(ingredient) {
@@ -54,7 +57,6 @@ export default Component.extend({
       }
     },
     createIngredient(selectedLocation){
-      console.log(selectedLocation);
       let newIngredient = this.store.createRecord('ingredient', {
         name: this.get('ingredient_name'),
         location: selectedLocation.toLowerCase()

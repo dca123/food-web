@@ -9,7 +9,7 @@
     <div class="card">
       <ul class="list-group list-group-flush">
         {{#each recipes as |recipe|}}
-          <li class="list-group-item">{{recipe.ingredient}}  {{recipe.quantity}} {{recipe.measure}}</li>
+          <li class="list-group-item">{{pluralize recipe.quantity recipe.measure}} of {{recipe.ingredient}}</li>
         {{/each}}
       </ul>
     </div>
@@ -45,7 +45,9 @@
           <div class="col-6">
             <div class="form-group">
               <label for="exampleFormControlSelect2">Unit</label>
-              {{input class="form-control" value=measure}}
+              {{#power-select options=measurements selected=measure placeholder="Select Measure" onchange=(action (mut measure)) as |measurement|}}
+                {{humanize measurement}}
+              {{/power-select}}
             </div>
           </div>
         </div>
