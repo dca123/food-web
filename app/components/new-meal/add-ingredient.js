@@ -25,14 +25,11 @@ export default Component.extend(errorDisplay, {
     this._super(...arguments);
     this.set('recipes', []);
     this.set('filteredIngredients', this.get('ingredients'))
-    let mealModel = this.store.findRecord('meal', 1);
-    this.set('model', mealModel);
   },
   actions: {
     removeRecipe(id, index){
       this.store.findRecord('recipe', id, {backgroundReload: false}).then((recipe) => {
         recipe.destroyRecord().then(() => {
-          this.get('recipes').removeAt(index);
         }, (error) => {
           this.errorToast(error, 8000);
         });
@@ -56,6 +53,9 @@ export default Component.extend(errorDisplay, {
         };
         let recipes = this.get('recipes')
         recipes.pushObject(recipe);
+        this.set('measure', '');
+        this.set('quantity', '');
+        this.set('selectedIngredient', '');
       }, (error) => {
         this.errorToast(error, 8000);
       });

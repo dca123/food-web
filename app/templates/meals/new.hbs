@@ -1,6 +1,17 @@
+<div class="row">
+  <div class="col">
+    {{#if isMealSaved}}
+      <h2 class="text-primary">Ingredients for <i>{{model.name}}</i></h2>
+    {{else}}
+      <h2 class="text-primary">Adding New Meal</h2>
+    {{/if}}
+  </div>
+</div>
+<hr />
 {{#if isMealSaved}}
   {{new-meal/add-ingredient model=model}}
 {{else}}
-  {{new-meal/add-meal categories=categories addMeal="addMeal"
-  createIngredient="createIngredient" model=model isMealSaved=isMealSaved ingredients=ingredients}}
+  {{#new-meal/add-meal categories=categories addMeal="addMeal" model=model isMealSaved=isMealSaved}}
+    Save and start Adding Ingredients !
+  {{/new-meal/add-meal }}
 {{/if}}

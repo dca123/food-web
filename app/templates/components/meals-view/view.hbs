@@ -1,0 +1,42 @@
+{{#unless model.recipes.isPending}}
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">
+              Name
+            </th>
+            <th scope="col">
+              Quantity
+            </th>
+            <th scope="col">
+              Measure
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each model.recipes as |recipe|}}
+            <tr>
+              <td>
+                {{recipe.ingredient.name}}
+              </td>
+              <td>
+                {{recipe.quantity}}
+              </td>
+              <td>
+                {{humanize recipe.measure}}
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{{else}}
+  <div class="row justify-content-center">
+    <div class="col-1">
+      {{loader-ball-grid-pulse}}
+    </div>
+  </div>
+{{/unless}}

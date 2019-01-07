@@ -1,21 +1,15 @@
 <div class="row">
-  <div class="col">
-    <h2 class="text-primary">Ingredients for <i>{{model.name}}</i></h2>
-  </div>
-</div>
-<hr />
-<div class="row">
   <div class="col-5">
     <div class="card">
       <div class="card-header">
         <strong>Recipe</strong>
       </div>
       <ul class="list-group list-group-flush">
-        {{#each recipes as |recipe index|}}
+        {{#each model.recipes as |recipe index|}}
           <li class="list-group-item">
             <div class="row">
               <div class="col-11">
-                {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient}}
+                {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}
               </div>
               <div class="col-1">
                 <button type="button" class="close" {{action "removeRecipe" recipe.id index}} aria-label="Close">
