@@ -7,26 +7,34 @@
     {{/unless}}
   </div>
   <div class="col-2">
+    <button class="btn btn-block btn-lg d-print-none btn-outline-danger {{if isEditing 'disabled'}}" {{action "deleteMeal"}} disabled={{if isEditing 'true'}}>
+      Delete
+    </button>
+  </div>
+  <div class="col-2">
     <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
       {{if isEditing "View Mode" "Edit Mode"}}
     </button>
   </div>
   <div class="col-2">
-    <button class="btn btn-block btn-lg d-print-none btn-outline-primary {{unless isEditing 'disabled'}}"
-    {{action (toggle "isMealSaved" this)}} disabled={{unless isEditing 'true'}}>
+    <button class="btn btn-block btn-lg d-print-none btn-outline-primary {{unless isEditing 'disabled'}}" {{action (toggle "isMealSaved" this)}} disabled={{unless isEditing 'true'}}>
       {{if isMealSaved "Edit Meal" "Edit Ingredients"}}
     </button>
   </div>
 </div>
 
-{{#if isEditing}}
-  {{#if isMealSaved}}
-    {{new-meal/add-ingredient model=model}}
+{{#unless isDeleting}}
+  {{#if isEditing}}
+    {{#if isMealSaved}}
+      {{new-meal/add-ingredient model=model}}
+    {{else}}
+      {{#new-meal/add-meal categories=categories addMeal="addMeal" model=model isMealSaved=isMealSaved}}
+        Save and start Editing Ingredients !
+      {{/new-meal/add-meal }}
+    {{/if}}
   {{else}}
-    {{#new-meal/add-meal categories=categories addMeal="addMeal" model=model isMealSaved=isMealSaved}}
-      Save and start Editing Ingredients !
-    {{/new-meal/add-meal }}
+    {{meals-view/view model=model}}
   {{/if}}
 {{else}}
-  {{meals-view/view model=model}}
-{{/if}}
+  {{spinning-loader}}
+{{/unless}}
