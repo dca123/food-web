@@ -11,8 +11,19 @@
         <strong>Recipe</strong>
       </div>
       <ul class="list-group list-group-flush">
-        {{#each recipes as |recipe|}}
-          <li class="list-group-item">{{pluralize recipe.quantity recipe.measure}} of {{recipe.ingredient}}</li>
+        {{#each recipes as |recipe index|}}
+          <li class="list-group-item">
+            <div class="row">
+              <div class="col-11">
+                {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient}}
+              </div>
+              <div class="col-1">
+                <button type="button" class="close" {{action "removeRecipe" recipe.id index}} aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </li>
         {{/each}}
       </ul>
     </div>

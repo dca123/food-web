@@ -35,7 +35,7 @@
         {{#each model as |meal|}}
         <tr>
           <td>
-            {{#link-to 'meals.view' meal.id}}{{meal.name}}{{/link-to}}
+            {{#link-to 'meals.view' meal.id class="d-block"}}{{meal.name}}{{/link-to}}
           </td>
           <td>
             {{meal.notes}}

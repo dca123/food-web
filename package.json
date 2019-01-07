@@ -42,6 +42,7 @@
     "ember-cli-template-lint": "^1.0.0-beta.1",
     "ember-cli-uglify": "^2.1.0",
     "ember-composable-helpers": "^2.1.0",
+    "ember-cp-validations": "^4.0.0-beta.3",
     "ember-data": "~3.4.0",
     "ember-data-filter": "^1.13.0",
     "ember-export-application-global": "^2.0.0",

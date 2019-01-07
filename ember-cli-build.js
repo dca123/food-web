@@ -10,11 +10,11 @@ module.exports = function(defaults) {
       'importBootstrapCSS': false
     },
     'ember-composable-helpers': {
-      only: ['find-by', 'toggle', 'compute'],
+      only: ['find-by', 'toggle', 'compute', 'pipe'],
     },
-    // 'ember-cli-string-helpers': {
-    //   only: ['capitalize', 'humanize'],
-    // },
+    'ember-cli-string-helpers': {
+      only: ['capitalize', 'humanize'],
+    },
     'ember-font-awesome': {
       removeUnusedIcons: EmberApp.env() === 'production',
       useScss: true, // for ember-cli-sass

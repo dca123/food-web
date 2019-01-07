@@ -25,8 +25,19 @@ export default Component.extend(errorDisplay, {
     this._super(...arguments);
     this.set('recipes', []);
     this.set('filteredIngredients', this.get('ingredients'))
+    let mealModel = this.store.findRecord('meal', 1);
+    this.set('model', mealModel);
   },
   actions: {
+    removeRecipe(id, index){
+      this.store.findRecord('recipe', id, {backgroundReload: false}).then((recipe) => {
+        recipe.destroyRecord().then(() => {
+          this.get('recipes').removeAt(index);
+        }, (error) => {
+          this.errorToast(error, 8000);
+        });
+      })
+    },
     createRecipe() {
       let ingredientModel = this.get('ingredientModel')
       let newRecipe = this.store.createRecord('recipe', {
@@ -40,7 +51,8 @@ export default Component.extend(errorDisplay, {
         let recipe = {
           ingredient: ingredientModel.get('name'),
           quantity: data.quantity,
-          measure: data.measure
+          measure: data.measure,
+          id: data.id
         };
         let recipes = this.get('recipes')
         recipes.pushObject(recipe);

@@ -8,7 +8,7 @@ export default Route.extend({
   setupController(controller, model) {
     this._super(...arguments);
     controller.set('categories', ['NA', 'pork', 'chicken', 'fish', 'beef', 'Vegetables', 'dessert']);
-    // controller.set('isMealSaved', true);
+    controller.set('isMealSaved', true);
   },
   deactivate() {
     this.controllerFor('meals.new').set('isMealSaved', false);
