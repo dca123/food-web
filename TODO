@@ -3,7 +3,7 @@ COMPLETED - limit size of pagination numbers
 COMPLETED - Deal with creating a menu when half created
 COMPLETED - Deal with adding duplicate items in the menu
 COMPLETED - make sure grid system used in ALL views
-Deal with appropriate routes for weeks and menus
+COMPLETED - Deal with appropriate routes for weeks and menus
 Refactoring with ember-concurrency
 UI Overhaul
 Change actions from controllers to routes

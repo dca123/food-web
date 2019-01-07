@@ -12,8 +12,8 @@
       {{#unless weekModel}}
         {{bs-tooltip title="Create the Menu first !" placement="right"}}
       {{/unless}}
-      {{#link-to "menus.list" weekModel.id classNames="btn btn-lg d-print-none btn-outline-primary" class=(if (not weekModel) 'disabled')}}
-        Shopping List
+      {{#link-to "weeks.list" weekModel.id classNames="btn btn-block btn-lg d-print-none btn-outline-primary" class=(if (not weekModel) 'disabled')}}
+        Generate Shopping List
       {{/link-to}}
     </span>
   </div>

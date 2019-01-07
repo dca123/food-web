@@ -13,7 +13,7 @@ Router.map(function() {
     this.route('new');
   });
   this.route('ingredients');
-  this.route('menus', function() {
+  this.route('weeks', function() {
     this.route('new');
     this.route('view', { path: '/:week_id/view'});
     this.route('list', { path: '/:week_id/list'});

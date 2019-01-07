@@ -26,8 +26,8 @@ export default Route.extend({
   },
   actions: {
     willTransition(transition){
-      this.controllerFor('menus.new').set('weekDestination', null);
-      this.controllerFor('menus.new').set('weekSaved', false);
+      this.controllerFor('weeks.new').set('weekDestination', null);
+      this.controllerFor('weeks.new').set('weekSaved', false);
     }
   }
 });

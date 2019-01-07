@@ -1,8 +1,8 @@
 <div class="row pb-2 justify-content-end">
   <div class="col">
-    <h2>Menu List
+    <h2>Week List
       {{#if (not model)}}
-        <span class="badge badge-warning">No Menus Found !</span>
+        <span class="badge badge-warning">No Weeks Found !</span>
       {{/if}}
     </h2>
   </div>
@@ -40,7 +40,7 @@
         {{#each model as |menu|}}
           <tr>
             <td>
-              {{link-to menu.week_of "menus.view" menu.id class="d-block"}}
+              {{link-to menu.week_of "weeks.view" menu.id class="d-block"}}
             </td>
             <td>
               {{menu.month}}
@@ -60,23 +60,23 @@
 <div class="row justify-content-center">
   <div class="col-4">
     <ul class="pagination ">
-      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='menus'}}
-      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='menus'}}
+      {{paginate-move model=model moveText="<<" pageNum=model.meta.pagination.first.number moveLink='weeks'}}
+      {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='weeks'}}
 
       {{#each count as |number|}}
         {{#if (eq number model.meta.pagination.self.number)}}
           <li class="page-item active">
-            {{link-to number 'menus' (query-params page=number) class="page-link"}}
+            {{link-to number 'weeks' (query-params page=number) class="page-link"}}
           </li>
         {{else}}
           <li class="page-item">
-            {{link-to number 'menus' (query-params page=number) class="page-link"}}
+            {{link-to number 'weeks' (query-params page=number) class="page-link"}}
           </li>
         {{/if}}
       {{/each}}
 
-      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='menus'}}
-      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number moveLink='menus'}}
+      {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='weeks'}}
+      {{paginate-move model=model moveText=">>" pageNum=model.meta.pagination.last.number moveLink='weeks'}}
 
     </ul>
   </div>

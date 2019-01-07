@@ -6,7 +6,7 @@ export default Route.extend({
   },
   afterModel(model){
     model.shoppingList().then((data) => {
-      this.controllerFor('menus.list').set('shoppingList', data);
+      this.controllerFor('weeks.list').set('shoppingList', data);
     })
   }
 });

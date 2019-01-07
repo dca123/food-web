@@ -24,7 +24,7 @@ export default Controller.extend({
       this.set('weekDestination', newWeek.id);
     },
     viewTransition(id){
-      this.transitionToRoute('menus.view', id, {
+      this.transitionToRoute('weeks.view', id, {
         queryParams: {
           isEditing: true
         }
