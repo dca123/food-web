@@ -26,10 +26,10 @@
 {{#unless isDeleting}}
   {{#if isEditing}}
     {{#if isMealSaved}}
-      {{new-meal/add-ingredient model=model}}
+      {{new-meal/add-recipe model=model isEditing=isEditing}}
     {{else}}
       {{#new-meal/add-meal categories=categories addMeal="addMeal" model=model isMealSaved=isMealSaved}}
-        Save and start Editing Ingredients !
+        Update and start Editing Recipes !
       {{/new-meal/add-meal }}
     {{/if}}
   {{else}}

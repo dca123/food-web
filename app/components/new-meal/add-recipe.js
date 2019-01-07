@@ -8,7 +8,6 @@ import {
 import errorDisplay from '../../mixins/error-display';
 
 export default Component.extend(errorDisplay, {
-  recipes: null,
   store: service(),
   quantity: null,
   measure: null,
@@ -23,17 +22,40 @@ export default Component.extend(errorDisplay, {
   }),
   init() {
     this._super(...arguments);
-    this.set('recipes', []);
     this.set('filteredIngredients', this.get('ingredients'))
   },
   actions: {
-    removeRecipe(id, index){
-      this.store.findRecord('recipe', id, {backgroundReload: false}).then((recipe) => {
-        recipe.destroyRecord().then(() => {
-        }, (error) => {
-          this.errorToast(error, 8000);
-        });
+    removeRecipe(id) { //removing from list
+      let recipe = this.store.peekRecord('recipe', id);
+      recipe.destroyRecord().then((data) => {
+        this.successToast('Removed Recipe !');
+      }, (error) => {
+        this.errorToast(error, 8000);
       })
+    },
+    deleteIngredient() {
+      let ingredientModel = this.get('ingredientModel');
+      this.set('newIngredientOpen', false);
+      ingredientModel.destroyRecord().then((data) => {
+        this.successToast('Deleted Ingredient !');
+        this.get('model').reload();
+      }, (error) => {
+        this.errorToast(error, 8000);
+      });
+    },
+    editIngredientModal(ingredientModel) {
+      let _ingredientModel = this.store.peekRecord('ingredient', ingredientModel.get('id'));
+      this.set('ingredientModel', _ingredientModel);
+      this.set('newIngredientOpen', true);
+    },
+    updateIngredient() {
+      this.set('newIngredientOpen', false);
+      let ingredientModel = this.get('ingredientModel')
+      ingredientModel.save().then((data) => {
+        this.successToast('Updated Ingredient !');
+      }, (error) => {
+        this.errorToast(error, 8000);
+      });
     },
     createRecipe() {
       let ingredientModel = this.get('ingredientModel')
@@ -45,14 +67,7 @@ export default Component.extend(errorDisplay, {
       });
 
       newRecipe.save().then((data) => {
-        let recipe = {
-          ingredient: ingredientModel.get('name'),
-          quantity: data.quantity,
-          measure: data.measure,
-          id: data.id
-        };
-        let recipes = this.get('recipes')
-        recipes.pushObject(recipe);
+        this.successToast('Updated the Recipe !');
         this.set('measure', '');
         this.set('quantity', '');
         this.set('selectedIngredient', '');
@@ -79,12 +94,9 @@ export default Component.extend(errorDisplay, {
       newIngredient.save().then((data) => {
         this.set('newIngredientOpen', false);
         this.set('ingredientModel', data);
-        let ingredient = {
-          id: data.id,
-          name: data.name
-        };
-        this.get('ingredients').pushObject(ingredient);
-        this.set('selectedIngredient', ingredient);
+        this.get('ingredients').pushObject(data);
+        this.set('selectedIngredient', data);
+        this.successToast('Created New Ingredient !');
       }, (error) => {
         this.errorToast(error, 8000);
       });

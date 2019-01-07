@@ -3,16 +3,25 @@
     <div class="card">
       <div class="card-header">
         <strong>Recipe</strong>
+        {{#if isEditing}}
+          <small class="form-text text-muted">Click on an ingredient to edit it/Click on the x to remove it from this meal</small>
+        {{/if}}
       </div>
       <ul class="list-group list-group-flush">
         {{#each model.recipes as |recipe index|}}
           <li class="list-group-item">
             <div class="row">
               <div class="col-11">
-                {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}
+                {{#if isEditing}}
+                  <a href="#" {{action "editIngredientModal" recipe.ingredient index}}>
+                    {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}
+                  </a>
+                {{else}}
+                  {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}
+                {{/if}}
               </div>
               <div class="col-1">
-                <button type="button" class="close" {{action "removeRecipe" recipe.id index}} aria-label="Close">
+                <button type="button" class="close" {{action "removeRecipe" recipe.id}} aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
@@ -62,11 +71,13 @@
         </div>
         <div class="row">
           <div class="col">
-            <button class="btn btn-outline-primary text-center float-right" {{action "createRecipe"}}>Add Ingredient</button>
+            <button class="btn btn-outline-primary text-center float-right" {{action "createRecipe"}}>Add To Recipe</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-{{new-meal/new-ingredient-modal ingredient_name=ingredient_name newIngredientOpen=newIngredientOpen createIngredient="createIngredient"}}
+
+{{new-meal/new-ingredient-modal ingredient_name=ingredient_name ingredientModel=ingredientModel updateIngredient="updateIngredient"
+  newIngredientOpen=newIngredientOpen createIngredient="createIngredient" deleteIngredient="deleteIngredient"}}

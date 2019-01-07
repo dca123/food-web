@@ -9,5 +9,12 @@ export default Mixin.create({
         timeOut: duration
       });
     });
+  },
+  successToast(message){
+    this.toast.success(message, '', {
+      progressBar: false,
+      closeButton: false,
+      timeOut: 5000
+    });
   }
 });

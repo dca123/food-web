@@ -1,16 +1,34 @@
 {{#bs-modal open=newIngredientOpen onSubmit=(action "createIngredient") onHidden=(action (mut newIngredientOpen) false) as |modal|}}
   {{#modal.header}}
-    <h5 class="modal-title">
-      Select the location for {{ingredient_name}}
-    </h5>
+    <div class="row">
+      <div class="col">
+        <h5 class="modal-title">
+          {{#if ingredientModel}}
+            Edit {{input type="text" value=ingredientModel.name class="text-success" autofocus=true}}
+          {{else}}
+            Select the location for {{ingredient_name}}
+          {{/if}}
+        </h5>
+      </div>
+    </div>
   {{/modal.header}}
   {{#modal.body}}
-    {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=selectedLocation onchange=(action "selectIngredient") as |loc|}}
+    {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=(if ingredientModel ingredientModel.location selectedLocation)
+          onchange=(action "selectIngredient") as |loc|}}
       {{capitalize loc}}
     {{/power-select}}
   {{/modal.body}}
   {{#modal.footer}}
-    {{#bs-button type="danger" onClick=(action modal.close)}}Cancel{{/bs-button}}
-    {{#bs-button type="primary" onClick=(action modal.submit) disabled=isDisabled}}Create{{/bs-button}}
+    {{#if ingredientModel}}
+      {{#bs-button type="danger" onClick=(action "deleteIngredient")}}Delete{{/bs-button}}
+    {{/if}}
+    {{#bs-button type="secondary" onClick=(action modal.close)}}Cancel{{/bs-button}}
+    {{#bs-button type="primary" onClick=(action modal.submit) disabled=isDisabled}}
+      {{#if ingredientModel}}
+        Edit
+      {{else}}
+        Create
+      {{/if}}
+    {{/bs-button}}
   {{/modal.footer}}
 {{/bs-modal}}
