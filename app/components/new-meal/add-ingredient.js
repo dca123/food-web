@@ -5,8 +5,9 @@ import {
 import {
   computed
 } from '@ember/object';
+import errorDisplay from '../../mixins/error-display';
 
-export default Component.extend({
+export default Component.extend(errorDisplay, {
   recipes: null,
   store: service(),
   quantity: null,
@@ -26,7 +27,7 @@ export default Component.extend({
     this.set('filteredIngredients', this.get('ingredients'))
   },
   actions: {
-    createRecipe(){
+    createRecipe() {
       let ingredientModel = this.get('ingredientModel')
       let newRecipe = this.store.createRecord('recipe', {
         meal: this.get('model'),
@@ -35,7 +36,7 @@ export default Component.extend({
         ingredient: ingredientModel
       });
 
-      newRecipe.save().then((data) =>  {
+      newRecipe.save().then((data) => {
         let recipe = {
           ingredient: ingredientModel.get('name'),
           quantity: data.quantity,
@@ -43,6 +44,8 @@ export default Component.extend({
         };
         let recipes = this.get('recipes')
         recipes.pushObject(recipe);
+      }, (error) => {
+        this.errorToast(error, 8000);
       });
     },
     selectIngredient(ingredient) {
@@ -56,7 +59,7 @@ export default Component.extend({
         this.set('ingredientModel', ingredientModel);
       }
     },
-    createIngredient(selectedLocation){
+    createIngredient(selectedLocation) {
       let newIngredient = this.store.createRecord('ingredient', {
         name: this.get('ingredient_name'),
         location: selectedLocation.toLowerCase()
@@ -70,6 +73,8 @@ export default Component.extend({
         };
         this.get('ingredients').pushObject(ingredient);
         this.set('selectedIngredient', ingredient);
+      }, (error) => {
+        this.errorToast(error, 8000);
       });
     },
     searchAsync(value) {

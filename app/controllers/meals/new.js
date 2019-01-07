@@ -1,10 +1,13 @@
 import Controller from '@ember/controller';
-export default Controller.extend({
+import errorDisplay from '../../mixins/error-display';
 
+export default Controller.extend(errorDisplay, {
   actions: {
-    addMeal(model){
+    addMeal(model) {
       model.save().then((data) => {
         this.set('isMealSaved', true);
+      }, (error) => {
+        this.errorToast(error, 8000);
       })
     }
   }

@@ -16,7 +16,8 @@
         <label class="text-primary">Serves
         </label>
         {{input value=model.serves type="text" class="form-control" type="number" min="1"
-        disabled=isMealSaved}}
+          disabled=isMealSaved}}
+        <small class="form-text text-muted">Type in a number here</small>
       </div>
     </div>
     <div class="row pt-3">
@@ -24,6 +25,7 @@
         <div class="form-group">
           <label>Notes</label>
           {{textarea class="form-control" value=model.notes rows="3" disabled=isMealSaved}}
+          <small class="form-text text-muted">Anything the cook should know !</small>
         </div>
       </div>
     </div>

@@ -63,5 +63,7 @@ a.btn.disabled {
 
 #toast-container > .toast {
   background-image: none !important;
+}
+#toast-container > .toast-error {
   background-color: $danger;
 }
