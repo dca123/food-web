@@ -6,21 +6,21 @@
       <h2 class="text-primary">Editing ingredients for <i>{{model.name}}</i></h2>
     {{/unless}}
   </div>
-  <div class="col-1">
+  <div class="col-2">
     <button class="btn btn-block btn-lg d-print-none btn-outline-danger {{if isEditing 'disabled'}}" {{action "deleteMeal"}} disabled={{if isEditing 'true'}}>
-      {{fa-icon "trash"}}
-    </button>
-  </div>
-  <div class="col-1">
-    <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
-      {{#if isEditing}}
-        {{fa-icon "list"}}
-      {{else}}
-        {{fa-icon "pencil"}}
-      {{/if}}
+      {{fa-icon "trash"}} Delete
     </button>
   </div>
   <div class="col-2">
+    <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
+      {{#if isEditing}}
+        {{fa-icon "list"}} View
+      {{else}}
+        {{fa-icon "pencil"}} Edit
+      {{/if}}
+    </button>
+  </div>
+  <div class="col-2 col-sm-3">
     <button class="btn btn-block btn-lg d-print-none btn-outline-primary {{unless isEditing 'disabled'}}" {{action (toggle "isMealSaved" this)}} disabled={{unless isEditing 'true'}}>
       {{if isMealSaved "Edit Meal" "Edit Ingredients"}}
     </button>

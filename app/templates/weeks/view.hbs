@@ -5,15 +5,15 @@
   <div class="col-1">
     <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
       {{#if isEditing}}
-        {{fa-icon "list"}}
+        {{fa-icon "list"}} View
       {{else}}
-        {{fa-icon "pencil"}}
+        {{fa-icon "pencil"}} Edit
       {{/if}}
     </button>
   </div>
   <div class="col-1">
     {{#link-to "weeks.list" weekModel.id class="btn btn-block btn-lg d-print-none btn-outline-primary"}}
-      {{fa-icon "cart-arrow-down"}}
+      {{fa-icon "cart-arrow-down"}} Generate Shopping List
     {{/link-to}}
   </div>
 </div>

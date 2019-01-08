@@ -93,10 +93,11 @@ export default Component.extend(errorDisplay, {
         this.set('ingredientModel', ingredientModel);
       }
     },
-    createIngredient(selectedLocation) {
+    createIngredient(selectedLocation, selectedCategory) {
       let newIngredient = this.store.createRecord('ingredient', {
         name: this.get('ingredient_name'),
-        location: selectedLocation.toLowerCase()
+        location: selectedLocation.toLowerCase(),
+        category: selectedCategory.toLowerCase()
       });
       newIngredient.save().then((data) => {
         this.set('newIngredientOpen', false);

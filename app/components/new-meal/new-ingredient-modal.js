@@ -1,13 +1,17 @@
 import Component from '@ember/component';
 import {
+  computed,
   observer
 } from '@ember/object';
-//Ingredient model implies saving
+import {
+  inject as service
+} from '@ember/service';
 export default Component.extend({
-  init() {
-    this._super(...arguments);
-  },
   locations: ['walmart', 'aldi', 'other'],
+  ingredientCategoryList: service(),
+  ingredientCategories: computed('ingredientCategoryList.categories', function(){
+    return this.get('ingredientCategoryList.categories')
+  }),
   isDisabled: true,
   nameChanged: observer('ingredientModel.name', function(){
     this.set('isDisabled', false);
@@ -18,7 +22,7 @@ export default Component.extend({
       if (ingredientModel) {
         this.sendAction("updateIngredient");
       } else {
-        this.sendAction("createIngredient", this.get('selectedLocation'));
+        this.sendAction("createIngredient", this.get('selectedLocation'), this.get('selectedCategory'));
       }
     },
     selectIngredient(location) {
@@ -26,6 +30,14 @@ export default Component.extend({
         this.set('ingredientModel.location', location)
       } else {
         this.set('selectedLocation', location);
+      }
+      this.set('isDisabled', false);
+    },
+    selectedCategory(category) {
+      if (this.get('ingredientModel')) {
+        this.set('ingredientModel.category', category)
+      } else {
+        this.set('selectedCategory', category);
       }
       this.set('isDisabled', false);
     },

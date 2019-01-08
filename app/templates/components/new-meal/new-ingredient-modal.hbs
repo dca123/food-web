@@ -6,7 +6,7 @@
           {{#if ingredientModel}}
             Edit {{input type="text" value=ingredientModel.name class="text-success" autofocus=true}}
           {{else}}
-            Select the location for {{ingredient_name}}
+            Select the Location & Category for {{ingredient_name}}
           {{/if}}
         </h5>
       </div>
@@ -15,6 +15,10 @@
   {{#modal.body}}
     {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=(if ingredientModel ingredientModel.location selectedLocation)
           onchange=(action "selectIngredient") as |loc|}}
+      {{capitalize loc}}
+    {{/power-select}}
+    {{#power-select options=ingredientCategories renderInPlace=true placeholder="Select a Category" selected=(if ingredientModel ingredientModel.category selectedCategory)
+          onchange=(action "selectedCategory") as |loc|}}
       {{capitalize loc}}
     {{/power-select}}
   {{/modal.body}}
