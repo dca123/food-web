@@ -1,3 +1,9 @@
+@media print {
+  a {
+    text-decoration: none !important;
+  }
+}
+
 body {
   padding-top: 20px;
   padding-bottom: 100px;
@@ -8,6 +14,7 @@ $secondary: #ffd700;
 $primary-color: $primary;
 $ember-power-select-focus-border-color: $primary;
 $font-family-sans-serif: 'Open Sans', sans-serif;
+
 .custom {
   line-height: 2.5 !important;
   max-height: 2.5em !important;
@@ -64,6 +71,7 @@ $container-max-widths: (
 #toast-container > .toast {
   background-image: none !important;
 }
+
 #toast-container > .toast-error {
   background-color: $danger;
 }

@@ -7,33 +7,53 @@
     </h2>
   </div>
 </div>
+<hr />
 {{#if shoppingList}}
   <div class="row pt-4">
-    {{#each-in shoppingList as |location list|}}
+    {{#each-in shoppingList as |location category|}}
       <div class="col">
-        <div class="card">
-          <div class="card-header">
-            <strong>{{capitalize location}}</strong>
-          </div>
-          <ul class="list-group list-group-flush">
-            {{#each-in list as |item data|}}
-              <li class="list-group-item">{{capitalize item}}
-                <!-- If only one kind of measure -->
-                {{#if (eq data.length 1)}}
-                - {{pluralize data.0.quantity data.0.measure}}
-                {{else}}
-                  <ul>
-                    {{#each data as |measu|}}
-                      <li>
-                        {{pluralize measu.quantity measu.measure}}
+        <h4 class="text-center">{{humanize location}}</h4>
+        {{#each-in category as |name item|}}
+          {{#unless (eq (compute (action "isEmpty") item) true)}}
+            <div class="row pt-3">
+              <div class="col">
+                <div class="card">
+                  <div class="card-header">
+                    <strong>{{humanize name}}</strong>
+                  </div>
+                  <ul class="list-group list-group-flush">
+                    {{#each-in item as |itemName data|}}
+                      <li class="list-group-item">{{capitalize itemName}}
+                        <!-- If only one kind of measure -->
+                        {{#if (eq data.length 1)}}
+                          - {{pluralize data.0.quantity data.0.measure}}
+                          <div class="row">
+                            <div class="col">
+                              <small>{{data.0.notes}}</small>
+                            </div>
+                          </div>
+                        {{else}}
+                          <ul>
+                            {{#each data as |specificMeasure|}}
+                              <li>
+                                {{pluralize specificMeasure.quantity specificMeasure.measure}}
+                                <div class="row">
+                                  <div class="col">
+                                    <small>{{specificMeasure.notes}}</small>
+                                  </div>
+                                </div>
+                              </li>
+                            {{/each}}
+                          </ul>
+                        {{/if}}
                       </li>
-                    {{/each}}
+                    {{/each-in}}
                   </ul>
-                {{/if}}
-              </li>
-            {{/each-in}}
-          </ul>
-        </div>
+                </div>
+              </div>
+            </div>
+          {{/unless}}
+        {{/each-in}}
       </div>
     {{/each-in}}
   </div>
