@@ -1,7 +1,17 @@
 import Controller from '@ember/controller';
 import errorDisplay from '../../mixins/error-display';
+import {
+  inject as service
+} from '@ember/service';
+import {
+  computed
+} from '@ember/object';
 
 export default Controller.extend(errorDisplay, {
+  mealCategoryList: service(),
+  categories: computed('mealCategoryList.categories', function() {
+    return this.get('mealCategoryList.categories');
+  }),
   actions: {
     addMeal(model) {
       model.save().then((data) => {
@@ -10,7 +20,7 @@ export default Controller.extend(errorDisplay, {
         this.errorToast(error, 8000);
       })
     },
-    anotherMeal(){
+    anotherMeal() {
       let newMeal = this.store.createRecord('meal');
       this.set('model', newMeal);
       this.set('isMealSaved', false);

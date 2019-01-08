@@ -4,7 +4,9 @@
       <div class="card-header">
         <strong>Recipe</strong>
         {{#if isEditing}}
-          <small class="form-text text-muted">Click on an ingredient to edit it. Click on the x to remove it from this meal</small>
+          <small class="form-text text-muted">Click on an ingredient to edit it<br /> Click on the x to remove this ingredient <br />
+            Hover over italisized ingredients to see the note attatched to it
+          </small>
         {{/if}}
       </div>
       <ul class="list-group list-group-flush">
@@ -13,8 +15,11 @@
             <div class="row">
               <div class="col-11 col-sm-10">
                 {{#if isEditing}}
-                  <a href="#" {{action "editIngredientModal" recipe.ingredient index}}>
+                  <a href="#" {{action "editIngredientModal" recipe.ingredient index}} class={{if recipe.notes "font-italic"}}>
                     {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}
+                    {{#if recipe.notes}}
+                      {{bs-tooltip title=recipe.notes}}
+                    {{/if}}
                   </a>
                 {{else}}
                   {{pluralize recipe.quantity (humanize recipe.measure)}} of {{capitalize recipe.ingredient.name}}

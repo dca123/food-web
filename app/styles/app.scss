@@ -3,17 +3,21 @@
     text-decoration: none !important;
   }
 }
-
-body {
-  padding-top: 20px;
-  padding-bottom: 100px;
-}
-$body-bg: #ffffff;
+$body-bg: #fcfcfc;
 $primary: #6f2c91;
 $secondary: #ffd700;
 $primary-color: $primary;
 $ember-power-select-focus-border-color: $primary;
 $font-family-sans-serif: 'Open Sans', sans-serif;
+
+body {
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.container {
+  // background-color: #ffffff;
+}
 
 .custom {
   line-height: 2.5 !important;
@@ -25,11 +29,6 @@ $container-max-widths: (
   // lg: 1200px,
   xl: 1200px
 );
-
-.ember-power-select-typeahead-input {
-  // position: relative !important;
-}
-
 .btn.disabled {
   color: #A9A9A9 !important;
   border-color: #A9A9A9 !important;

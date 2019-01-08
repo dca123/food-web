@@ -7,8 +7,8 @@
     </h2>
   </div>
   <div class="col-3">
-    {{#power-select options=names selected=category placeholder="Filter Meal Type" onchange=(action "changeCategory") as |name|}}
-    {{capitalize name}}
+    {{#power-select options=categories allowClear=true selected=category placeholder="Filter Meal Type" onchange=(action "changeCategory") as |cate|}}
+      {{capitalize cate}}
     {{/power-select}}
   </div>
 </div>
@@ -33,20 +33,20 @@
       </thead>
       <tbody>
         {{#each model as |meal|}}
-        <tr>
-          <td>
-            {{#link-to 'meals.view' meal.id class="d-block"}}{{meal.name}}{{/link-to}}
-          </td>
-          <td>
-            {{meal.notes}}
-          </td>
-          <td>
-            {{meal.serves}}
-          </td>
-          <td>
-            {{capitalize meal.category}}
-          </td>
-        </tr>
+          <tr>
+            <td>
+              {{#link-to 'meals.view' meal.id class="d-block"}}{{meal.name}}{{/link-to}}
+            </td>
+            <td>
+              {{meal.notes}}
+            </td>
+            <td>
+              {{meal.serves}}
+            </td>
+            <td>
+              {{capitalize meal.category}}
+            </td>
+          </tr>
         {{/each}}
       </tbody>
     </table>
@@ -59,15 +59,15 @@
       {{paginate-move model=model moveText="<" pageNum=model.meta.pagination.prev.number moveLink='meals'}}
 
       {{#each count as |number|}}
-      {{#if (eq number model.meta.pagination.self.number)}}
-      <li class="page-item active">
-        {{link-to number 'meals' (query-params page=number) class="page-link"}}
-      </li>
-      {{else}}
-      <li class="page-item">
-        {{link-to number 'meals' (query-params page=number) class="page-link"}}
-      </li>
-      {{/if}}
+        {{#if (eq number model.meta.pagination.self.number)}}
+          <li class="page-item active">
+            {{link-to number 'meals' (query-params page=number) class="page-link"}}
+          </li>
+        {{else}}
+          <li class="page-item">
+            {{link-to number 'meals' (query-params page=number) class="page-link"}}
+          </li>
+        {{/if}}
       {{/each}}
 
       {{paginate-move model=model moveText=">" pageNum=model.meta.pagination.next.number moveLink='meals'}}

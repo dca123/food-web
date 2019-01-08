@@ -5,10 +5,6 @@ export default Route.extend({
   model() {
     return this.store.createRecord('meal');
   },
-  setupController(controller, model) {
-    this._super(...arguments);
-    controller.set('categories', ['NA', 'pork', 'chicken', 'fish', 'beef', 'vegetables', 'dessert', 'sides']);
-  },
   deactivate() {
     this.controllerFor('meals.new').set('isMealSaved', false);
   }
