@@ -20,14 +20,14 @@
   {{/modal.body}}
   {{#modal.footer}}
     {{#if ingredientModel}}
-      {{#bs-button type="danger" onClick=(action "deleteIngredient")}}Delete{{/bs-button}}
+      {{#bs-button type="danger" onClick=(action "deleteIngredient")}}{{fa-icon "trash"}}{{/bs-button}}
     {{/if}}
-    {{#bs-button type="secondary" onClick=(action modal.close)}}Cancel{{/bs-button}}
+    {{#bs-button type="secondary" onClick=(action modal.close)}}{{fa-icon "times"}}{{/bs-button}}
     {{#bs-button type="primary" onClick=(action modal.submit) disabled=isDisabled}}
       {{#if ingredientModel}}
         Edit
       {{else}}
-        Create
+        Save
       {{/if}}
     {{/bs-button}}
   {{/modal.footer}}

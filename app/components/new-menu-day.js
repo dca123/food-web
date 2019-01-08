@@ -48,7 +48,7 @@ export default Component.extend({
           let newWeek = this.get('store').createRecord('week', {
             week_of: newWeekStart.getDate(),
             month: newWeekStart.getMonth() + 1,
-            cost: 100,
+            cost: 0,
             year: newWeekStart.getFullYear()
           });
 

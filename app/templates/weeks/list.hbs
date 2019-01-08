@@ -7,7 +7,6 @@
     </h2>
   </div>
 </div>
-<!-- <hr> -->
 {{#if shoppingList}}
   <div class="row pt-4">
     {{#each-in shoppingList as |location list|}}
@@ -19,13 +18,18 @@
           <ul class="list-group list-group-flush">
             {{#each-in list as |item data|}}
               <li class="list-group-item">{{capitalize item}}
-                <ul>
-                  {{#each data as |measu|}}
-                    <li>
-                      {{pluralize measu.quantity measu.measure}}
-                    </li>
-                  {{/each}}
-                </ul>
+                <!-- If only one kind of measure -->
+                {{#if (eq data.length 1)}}
+                - {{pluralize data.0.quantity data.0.measure}}
+                {{else}}
+                  <ul>
+                    {{#each data as |measu|}}
+                      <li>
+                        {{pluralize measu.quantity measu.measure}}
+                      </li>
+                    {{/each}}
+                  </ul>
+                {{/if}}
               </li>
             {{/each-in}}
           </ul>

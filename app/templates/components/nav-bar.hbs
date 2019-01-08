@@ -6,13 +6,10 @@
   {{#navbar.content}}
     {{#navbar.nav as |nav|}}
       {{#nav.item}}
-        {{#nav.link-to "index"}}Home{{/nav.link-to}}
+        {{#nav.link-to "meals"}}{{fa-icon "cutlery"}} Meals{{/nav.link-to}}
       {{/nav.item}}
       {{#nav.item}}
-        {{#nav.link-to "meals"}}Meals{{/nav.link-to}}
-      {{/nav.item}}
-      {{#nav.item}}
-        {{#nav.link-to "weeks"}}Weeks{{/nav.link-to}}
+        {{#nav.link-to "weeks"}}{{fa-icon "calendar"}} Weeks{{/nav.link-to}}
       {{/nav.item}}
     {{/navbar.nav}}
   {{/navbar.content}}

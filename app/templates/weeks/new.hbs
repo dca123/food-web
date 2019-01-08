@@ -8,12 +8,15 @@
     {{/power-select}}
   </div>
   <div class="col">
+
+  </div>
+  <div class="col-1">
     <span class="d-inline-flex float-right" tabindex="0">
       {{#unless weekModel}}
         {{bs-tooltip title="Create the Menu first !" placement="right"}}
       {{/unless}}
       {{#link-to "weeks.list" weekModel.id classNames="btn btn-block btn-lg d-print-none btn-outline-primary" class=(if (not weekModel) 'disabled')}}
-        Generate Shopping List
+        {{fa-icon "cart-arrow-down"}}
       {{/link-to}}
     </span>
   </div>

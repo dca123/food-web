@@ -4,12 +4,20 @@ COMPLETED - Deal with creating a menu when half created
 COMPLETED - Deal with adding duplicate items in the menu
 COMPLETED - make sure grid system used in ALL views
 COMPLETED - Deal with appropriate routes for weeks and menus
+
+
 Refactoring with ember-concurrency
 UI Overhaul
-Change actions from controllers to routes
 Benchmark SQL and make it better
 Frequency column for meal
 Model Validations
 Refactor code entirely
 DOCUMENT your damn code if you can
 Make sure data is capitalized when stored and such
+
+Redo Modals with ember modals
+Add Recipts/Semester Funds
+
+Use YAML instead of enums
+Service for category
+Calculate serving sizes

@@ -9,7 +9,7 @@
 </div>
 <hr />
 {{#if isMealSaved}}
-  {{new-meal/add-recipe model=model}}
+  {{new-meal/add-recipe model=model anotherMeal="anotherMeal"}}
 {{else}}
   {{#new-meal/add-meal categories=categories addMeal="addMeal" model=model isMealSaved=isMealSaved}}
     Save and start Adding Recipes !

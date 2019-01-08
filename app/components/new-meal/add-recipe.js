@@ -25,6 +25,9 @@ export default Component.extend(errorDisplay, {
     this.set('filteredIngredients', this.get('ingredients'))
   },
   actions: {
+    anotherMeal(){
+      this.sendAction("anotherMeal");
+    },
     removeRecipe(id) { //removing from list
       let recipe = this.store.peekRecord('recipe', id);
       recipe.destroyRecord().then((data) => {
@@ -63,15 +66,18 @@ export default Component.extend(errorDisplay, {
         meal: this.get('model'),
         quantity: this.get('quantity'),
         measure: this.get('measure'),
-        ingredient: ingredientModel
+        ingredient: ingredientModel,
+        notes: this.get('notes')
       });
 
       newRecipe.save().then((data) => {
         this.successToast('Updated the Recipe !');
         this.set('measure', '');
         this.set('quantity', '');
+        this.set('notes', '');
         this.set('selectedIngredient', '');
       }, (error) => {
+        newRecipe.deleteRecord();
         this.errorToast(error, 8000);
       });
     },
@@ -79,6 +85,7 @@ export default Component.extend(errorDisplay, {
       if (ingredient.id == 0) {
         let name = ingredient.name.split("Create ")[1];
         this.set('ingredient_name', name);
+        this.set('ingredientModel', null);
         this.set('newIngredientOpen', true);
       } else {
         this.set('selectedIngredient', ingredient);
@@ -98,6 +105,7 @@ export default Component.extend(errorDisplay, {
         this.set('selectedIngredient', data);
         this.successToast('Created New Ingredient !');
       }, (error) => {
+        newIngredient.deleteRecord();
         this.errorToast(error, 8000);
       });
     },

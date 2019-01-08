@@ -7,12 +7,10 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
-  this.route('recipes');
   this.route('meals', function(){
     this.route('view', { path: '/:meal_id/view'});
     this.route('new');
   });
-  this.route('ingredients');
   this.route('weeks', function() {
     this.route('new');
     this.route('view', { path: '/:week_id/view'});

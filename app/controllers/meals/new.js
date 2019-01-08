@@ -9,6 +9,11 @@ export default Controller.extend(errorDisplay, {
       }, (error) => {
         this.errorToast(error, 8000);
       })
+    },
+    anotherMeal(){
+      let newMeal = this.store.createRecord('meal');
+      this.set('model', newMeal);
+      this.set('isMealSaved', false);
     }
   }
 });

@@ -3,6 +3,8 @@
   <p class="lead">Simple app to create menus and generate shopping lists.</p>
   <hr class="my-4">
   <p class="lead">
-    {{link-to "Create Week Menu" "weeks.new" class="btn btn-lg btn-outline-primary"}}
+    {{#link-to "weeks.new" class="btn btn-lg btn-outline-primary"}}
+      {{fa-icon "calendar-plus-o"}} New Week Menu
+    {{/link-to}}
   </p>
 </div>

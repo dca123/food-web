@@ -2,13 +2,19 @@
   <div class="col">
     <h2>Menu for the Week of {{title}}</h2>
   </div>
-  <div class="col-2">
+  <div class="col-1">
     <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
-      {{if isEditing "View Mode" "Edit Mode"}}
+      {{#if isEditing}}
+        {{fa-icon "list"}}
+      {{else}}
+        {{fa-icon "pencil"}}
+      {{/if}}
     </button>
   </div>
-  <div class="col-3">
-    {{link-to "Generate Shopping List" "weeks.list" weekModel.id class="btn btn-block btn-lg d-print-none btn-outline-primary"}}
+  <div class="col-1">
+    {{#link-to "weeks.list" weekModel.id class="btn btn-block btn-lg d-print-none btn-outline-primary"}}
+      {{fa-icon "cart-arrow-down"}}
+    {{/link-to}}
   </div>
 </div>
 <div class="row">
