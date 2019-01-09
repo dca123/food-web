@@ -1,7 +1,32 @@
-# food-web
+# Food App - Web UI
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This is the web ui for the DTD Food App. The purpose of this app is to streamline
+the menu creation process in my fraternity house.
+
+This application is created with Ember.js
+
+The user can create a menu for either this week, or the next week. This involves selecting the meals
+from the dropdown and finally generating the shopping list. After the purchase, the receipts can be added to
+the correct weeks to keep track of the finances for the food committee.
+
+This application was created because of the ineffectiveness of the current system which involved copy-pasting
+from a google doc to create the menu and grocery list, a tedious and boring task. With this new system, the user is
+capable of creating a menu and shopping list within minutes.
+
+***
+
+##Features
++ Creating and Updating the week's menu
++ Create week menus a week in advance.
++ Create, Edit, Delete Meals from the database along with ingredients
++ Generate Shopping lists ordered by location and type of ingredient, i.e 'meat', dairy
+
+##Proposed Features
++ Add Receipts to the weeks
++ Keep Track of Finances
++ Finance UI
+
+***
 
 ## Prerequisites
 
@@ -11,47 +36,3 @@ You will need the following things properly installed on your computer.
 * [Node.js](https://nodejs.org/) (with npm)
 * [Ember CLI](https://ember-cli.com/)
 * [Google Chrome](https://google.com/chrome/)
-
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd food-web`
-* `npm install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
