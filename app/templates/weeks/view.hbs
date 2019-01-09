@@ -1,6 +1,11 @@
-<div class="row pb-2 justify-content-between">
-  <div class="col">
+<div class="row pb-2">
+  <div class="col-5">
     <h2>Menu for the Week of {{title}}</h2>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-block btn-outline-info btn-lg d-print-none">
+      {{fa-icon "credit-card"}} Add Receipt
+    </button>
   </div>
   <div class="col-2">
     <button class="btn btn-block btn-lg d-print-none {{if isEditing 'btn-outline-primary' 'btn-outline-success'}}" {{action (toggle "isEditing" this)}}>
@@ -11,10 +16,14 @@
       {{/if}}
     </button>
   </div>
-  <div class="col-4">
-    {{#link-to "weeks.list" weekModel.id class="btn btn-block btn-lg d-print-none btn-outline-primary"}}
-      {{fa-icon "cart-arrow-down"}} Generate Shopping List
-    {{/link-to}}
+  <div class="col-3">
+    {{#bs-dropdown as |dd|}}
+      {{#dd.button block=true size="lg" class="btn-outline-primary d-print-none"}}Shopping <span class="caret"></span>{{/dd.button}}
+      {{#dd.menu as |ddm|}}
+        {{#ddm.item}}{{#ddm.link-to "index"}}{{fa-icon "plus-square"}} Add Markup{{/ddm.link-to}}{{/ddm.item}}
+        {{#ddm.item}}{{#ddm.link-to "weeks.list" weekModel.id }}{{fa-icon "cart-arrow-down"}} Generate Shopping List{{/ddm.link-to}}{{/ddm.item}}
+      {{/dd.menu}}
+    {{/bs-dropdown}}
   </div>
 </div>
 <div class="row">
