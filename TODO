@@ -4,6 +4,7 @@ COMPLETED - Deal with creating a menu when half created
 COMPLETED - Deal with adding duplicate items in the menu
 COMPLETED - make sure grid system used in ALL views
 COMPLETED - Deal with appropriate routes for weeks and menus
+COMPLETED - Service for category
 
 
 Refactoring with ember-concurrency
@@ -19,6 +20,5 @@ Redo Modals with ember modals
 Add Recipts/Semester Funds
 
 Use YAML instead of enums
-Service for category
 Calculate serving sizes
 Add Markup
