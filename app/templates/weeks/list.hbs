@@ -26,7 +26,7 @@
                       <li class="list-group-item">{{capitalize itemName}}
                         <!-- If only one kind of measure -->
                         {{#if (eq data.length 1)}}
-                          - {{pluralize data.0.quantity (humanize data.0.measure)}}
+                          - {{pluralize data.0.quantity data.0.measure}}
                           <div class="row">
                             <div class="col">
                               <small>{{data.0.notes}}</small>
@@ -36,7 +36,7 @@
                           <ul>
                             {{#each data as |specificMeasure|}}
                               <li>
-                                {{pluralize specificMeasure.quantity (humanize specificMeasure.measure)}}
+                                {{pluralize specificMeasure.quantity specificMeasure.measure}}
                                 <div class="row">
                                   <div class="col">
                                     <small>{{specificMeasure.notes}}</small>

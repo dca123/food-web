@@ -16,7 +16,6 @@ Router.map(function() {
     this.route('view', { path: '/:week_id/view'});
     this.route('list', { path: '/:week_id/list'});
   });
-  this.route('receipts');
 });
 
 export default Router;
