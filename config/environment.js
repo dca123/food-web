@@ -30,10 +30,6 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-  ENV.contentSecurityPolicy = {
-    // ... other stuff here
-    'connect-src': "'self' https://backend.devinda.me:3000"
-  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -57,6 +53,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
+     ENV.APP.API_HOST = 'http://backend.devinda.me:3000';
+     ENV.APP.SOME_HEADER = 'header';
   }
 
 
