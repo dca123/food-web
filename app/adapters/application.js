@@ -10,10 +10,10 @@ const {
 } = Ember;
 
 export default JSONAPIAdapter.extend({
- //  host: ENV.APP.API_HOST,
- // headers: {
- //   'X-SOME-HEADER': ENV.APP.SOME_HEADER
- // },
+  host: ENV.APP.API_HOST,
+ headers: {
+   'X-SOME-HEADER': ENV.APP.SOME_HEADER
+ },
   pathForType(type) {
     return pluralize(underscore(type));
   },
