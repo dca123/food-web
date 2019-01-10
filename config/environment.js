@@ -30,6 +30,10 @@ module.exports = function(environment) {
       // when it is created
     }
   };
+  ENV.contentSecurityPolicy = {
+    // ... other stuff here
+    'connect-src': "'self' https://backend.devinda.me:3000"
+  }
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;

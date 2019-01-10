@@ -9,7 +9,7 @@ const {
 } = Ember;
 
 export default JSONAPIAdapter.extend({
-  host: 'http://localhost:3000',
+  host: 'https://backend.devinda.me:3000',
   pathForType(type) {
     return pluralize(underscore(type));
   },
