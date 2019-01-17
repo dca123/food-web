@@ -53,7 +53,7 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     // here you can enable a production-specific feature
-     ENV.APP.API_HOST = 'http://backend.devinda.me:3000';
+     ENV.APP.API_HOST = 'https://backend.devinda.me';
      ENV.APP.SOME_HEADER = 'header';
   }
 
