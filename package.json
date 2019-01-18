@@ -53,6 +53,7 @@
     "ember-font-awesome": "^4.0.0-rc.4",
     "ember-inflector": "^3.0.0",
     "ember-load-initializers": "^1.1.0",
+    "ember-math-helpers": "^2.10.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-power-select": "^2.2.1",
     "ember-power-select-blockless": "^0.5.0",

@@ -18,7 +18,10 @@ module.exports = function(defaults) {
     'ember-font-awesome': {
       removeUnusedIcons: EmberApp.env() === 'production',
       useScss: true, // for ember-cli-sass
-    }
+    },
+    'ember-math-helpers': {
+     only: ['ceil'],
+   }
   });
 
   // Use `app.import` to add additional libraries to the generated
