@@ -9,6 +9,7 @@ import {
 
 export default Controller.extend(errorDisplay, {
   mealCategoryList: service(),
+  mealList: service(),
   categories: computed('mealCategoryList.categories', function() {
     return this.get('mealCategoryList.categories');
   }),
@@ -16,6 +17,7 @@ export default Controller.extend(errorDisplay, {
     addMeal(model) {
       model.save().then((data) => {
         this.set('isMealSaved', true);
+        this.get('mealList');
       }, (error) => {
         this.errorToast(error, 8000);
       })

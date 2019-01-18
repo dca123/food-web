@@ -10,11 +10,18 @@ export default Mixin.create({
       });
     });
   },
-  successToast(message){
+  successToast(message, duration = 4000){
     this.toast.success(message, '', {
       progressBar: false,
       closeButton: false,
-      timeOut: 5000
+      timeOut: duration
+    });
+  },
+  errorToastDefault(message, duration = 4000){
+    this.toast.error(message, '', {
+      progressBar: false,
+      closeButton: false,
+      timeOut: duration
     });
   }
 });

@@ -8,5 +8,10 @@ export default Service.extend({
     this.get('ajax').request('/ingredient_list').then((data) => {
       this.set('ingredients', data);
     });
+  },
+  refreshData(){
+    this.get('ajax').request('/ingredient_list').then((data) => {
+      this.set('ingredients', data);
+    });
   }
 });

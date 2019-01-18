@@ -8,7 +8,7 @@
   </div>
   <div class="col-3">
     <div class="input-group">
-      {{input type="number" value=servingSizeSelected class="form-control" placeholder=servingSize}}
+      {{input type="number" value=servingSizeSelected class="form-control" placeholder=servingSize min="1"}}
       <div class="input-group-append">
         <button class="btn btn-outline-primary" {{action "changeServingSize" servingSizeSelected}}>Change Serving Size</button>
       </div>

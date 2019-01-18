@@ -6,6 +6,7 @@ COMPLETED - make sure grid system used in ALL views
 COMPLETED - Deal with appropriate routes for weeks and menus
 COMPLETED - Service for category
 COMPLETED - Use YAML instead of enums
+COMPLETED - Calculate serving sizes
 
 
 Refactoring with ember-concurrency
@@ -20,5 +21,5 @@ Make sure data is capitalized when stored and such
 Redo Modals with ember modals
 Add Recipts/Semester Funds
 
-Calculate serving sizes
 Add Markup
+Fix issue of creating menu and not available on menu list

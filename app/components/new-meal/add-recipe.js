@@ -102,7 +102,7 @@ export default Component.extend(errorDisplay, {
       newIngredient.save().then((data) => {
         this.set('newIngredientOpen', false);
         this.set('ingredientModel', data);
-        this.get('ingredients').pushObject(data);
+        this.get('ingredientList').refreshData();
         this.set('selectedIngredient', data);
         this.successToast('Created New Ingredient !');
       }, (error) => {

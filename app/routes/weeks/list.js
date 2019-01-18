@@ -6,7 +6,11 @@ export default Route.extend({
   },
   setupController(controller, model) {
     this._super(...arguments);
-    let servingSize = this.controllerFor('weeks.list').get('servingSize')
+    let servingSize = this.controllerFor('weeks.list').get('servingSize');
+    if (servingSize < 1) {
+      servingSize = 30;
+      this.controllerFor('weeks.list').set('servingSize', 30);
+    }
     model.shoppingList({
       servingSize: servingSize
     }).then((data) => {
@@ -15,5 +19,6 @@ export default Route.extend({
   },
   deactivate() {
     this.controllerFor('weeks.list').set('servingSizeSelected', 30);
+    this.controllerFor('weeks.list').set('servingSize', 30);
   }
 });
