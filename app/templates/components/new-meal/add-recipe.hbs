@@ -60,14 +60,14 @@
         <div class="row">
           <div class="col-6">
             <div class="form-group">
-              <label for="exampleFormControlSelect2">Quantity</label>
+              <label>Quantity</label>
               {{input class="form-control" value=quantity type="number" min="1"}}
               <small class="form-text text-muted">Type in a number here</small>
             </div>
           </div>
           <div class="col-6">
             <div class="form-group">
-              <label for="exampleFormControlSelect2">Measure</label>
+              <label>Measure</label>
               {{#power-select options=measurements selected=measure placeholder="Select Measure" onchange=(action (mut measure)) as |measurement|}}
                 {{humanize measurement}}
               {{/power-select}}
@@ -84,14 +84,14 @@
           </div>
         </div>
         <div class="row">
+          <div class="col">
+            <button class="btn btn-outline-success text-center" {{action "createRecipe"}}>Add To Recipe</button>
+          </div>
           {{#unless isEditing}}
             <div class="col">
-              <button class="btn btn-outline-secondary text-center" {{action "anotherMeal"}}>Add Another Meal</button>
+              <button class="btn btn-outline-secondary text-center float-right" {{action "anotherMeal"}}>Add Another Meal</button>
             </div>
           {{/unless}}
-          <div class="col">
-            <button class="btn btn-outline-success text-center float-right" {{action "createRecipe"}}>Add To Recipe</button>
-          </div>
         </div>
       </div>
     </div>

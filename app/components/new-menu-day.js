@@ -73,10 +73,9 @@ export default Component.extend({
             });
           }, (data) => {
             let errors = data.errors;
-            let errorMessage = [];
-            errorMessage[0] = `${errors[0]['week_of']}`
-            errorMessage[1] = errors[1]['week_id']
-            this.sendAction('openDuplicateModel', errorMessage);
+            let message = errors[0]['week_of']
+            let week_id = errors[1]['week_id']
+            this.sendAction('openDuplicateModel', message, week_id);
           });
         }
       });

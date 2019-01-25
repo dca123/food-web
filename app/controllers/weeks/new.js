@@ -15,6 +15,7 @@ export default Controller.extend({
   weekModel: null,
   weekDestination: null,
   mealList: service(),
+  modalsManager: service(),
   meals: computed('mealList.meals', function() {
     return this.get('mealList.meals');
   }),
@@ -23,16 +24,14 @@ export default Controller.extend({
     changeWeek(newWeek) {
       this.set('weekDestination', newWeek.id);
     },
-    viewTransition(id){
-      this.transitionToRoute('weeks.view', id, {
-        queryParams: {
-          isEditing: true
-        }
-      });
-    },
-    openDuplicateModel(data){
-      this.set('errorMessage', data);
-      this.set('duplicateModel', true)
+    openDuplicateModel(message, id){
+      this.get('modalsManager').alert({title: 'Duplicate Week', body: message}).then(() => {
+        this.transitionToRoute('weeks.view', id, {
+          queryParams: {
+            isEditing: true
+          }
+        });
+      })
     }
   }
 });

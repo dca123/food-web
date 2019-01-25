@@ -14,6 +14,7 @@ export default Component.extend(errorDisplay, {
   ingredientModel: null,
   ingredientList: service(),
   measureList: service(),
+  modalsManager: service(),
   ingredients: computed('ingredientList.ingredients', function() {
     return this.get('ingredientList.ingredients');
   }),
@@ -25,7 +26,7 @@ export default Component.extend(errorDisplay, {
     this.set('filteredIngredients', this.get('ingredients'))
   },
   actions: {
-    anotherMeal(){
+    anotherMeal() {
       this.sendAction("anotherMeal");
     },
     removeRecipe(id) { //removing from list
@@ -84,9 +85,10 @@ export default Component.extend(errorDisplay, {
     selectIngredient(ingredient) {
       if (ingredient.id == 0) {
         let name = ingredient.name.split("Create ")[1];
-        this.set('ingredient_name', name);
-        this.set('ingredientModel', null);
-        this.set('newIngredientOpen', true);
+        // this.set('ingredient_name', name);
+        // this.set('ingredientModel', null);
+        // this.set('newIngredientOpen', true);
+        
       } else {
         this.set('selectedIngredient', ingredient);
         let ingredientModel = this.store.findRecord('ingredient', ingredient.id)
@@ -115,12 +117,10 @@ export default Component.extend(errorDisplay, {
       let filterdResults = ingredients.filter(function(data) {
         return data.name.match(new RegExp(value, "i"));
       });
-      if (filterdResults.length == 0) {
-        filterdResults.unshiftObject({
-          id: 0,
-          name: `Create ${value}`
-        });
-      }
+      filterdResults.unshiftObject({
+        id: 0,
+        name: `Create ${value}`
+      });
       this.set('filteredIngredients', filterdResults);
     },
     preventSearchesBelowThreeChars(term) {
