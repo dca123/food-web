@@ -7,12 +7,12 @@
     </h2>
   </div>
   <div class="col-3">
-    {{#power-select options=months selected=monthDestination placeholder="Filter by Month" onchange=(action "changeMonth") as |month|}}
+    {{#power-select options=months allowClear=true selected=monthDestination placeholder="Filter by Month" onchange=(action "changeMonth") as |month|}}
       {{month}}
     {{/power-select}}
   </div>
   <div class="col-3">
-    {{#power-select options=years selected=yearDestination placeholder="Filter by Year" onchange=(action "changeYear") as |year|}}
+    {{#power-select options=years allowClear=true selected=yearDestination placeholder="Filter by Year" onchange=(action "changeYear") as |year|}}
       {{year}}
     {{/power-select}}
   </div>
@@ -49,7 +49,7 @@
               {{menu.year}}
             </td>
             <td>
-              {{menu.cost}}
+              ${{menu.cost}}
             </td>
           </tr>
         {{/each}}

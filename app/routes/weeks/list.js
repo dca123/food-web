@@ -2,7 +2,13 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
   model(params) {
-    return this.store.findRecord('week', params.week_id)
+    let record = this.store.peekRecord('week', params.week_id);
+    if (record) {
+      return record;
+      this.controllerFor(this.routeName).set('weekModel', record);
+    } else {
+      return this.store.findRecord('week', params.week_id);
+    }
   },
   setupController(controller, model) {
     this._super(...arguments);

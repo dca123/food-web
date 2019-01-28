@@ -22,18 +22,13 @@ export default Controller.extend(paginationArray, {
   }),
   monthDestination: null,
   yearDestination: null,
-  months: ['All', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+  months: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
   count: Ember.computed('model.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {
     return this.paginateArray(this.get('model.meta.pagination.last.number'), this.get('model.meta.pagination.self.number'))
   }),
   actions: {
     changeMonth(month_num) {
-      month_num = month_num.toLowerCase();
-      if (month_num == 'all') {
-        this.set('monthDestination', null);
-      } else {
-        this.set('monthDestination', month_num);
-      }
+      this.set('monthDestination', month_num);
       this.set('page', 1)
       this.transitionToRoute({
         queryParams: {
@@ -43,12 +38,7 @@ export default Controller.extend(paginationArray, {
       })
     },
     changeYear(year_num) {
-      year_num = year_num.toLowerCase();
-      if (year_num == 'all') {
-        this.set('yearDestination', null);
-      } else {
-        this.set('yearDestination', year_num);
-      }
+      this.set('yearDestination', year_num);
       this.set('page', 1)
       this.transitionToRoute({
         queryParams: {

@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col">
+    <h2>Receipts for the
+      {{#link-to "weeks.view" model.id}}
+        Week of {{model.week_of}}/{{model.month}}
+      {{/link-to}}
+    </h2>
+  </div>
+</div>
+<div class="row pt-3">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Location</th>
+          <th scope="col">Cost</th>
+          <th scope="col">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model.receipts as |receipt|}}
+          <tr>
+            <td>{{capitalize receipt.location}}</td>
+            <td>${{receipt.cost}}</td>
+            <td>{{receipt.notes}}
+              <button type="button" class="close" aria-label="Close" {{action "deleteReceipt" receipt.id}}>
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <div class="col-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add Receipt</h5>
+        <hr />
+        <div class="form-group">
+          <label>Location</label>
+          {{#power-select options=locations placeholder="Select a Location" selected=selectedLocation
+                onchange=(action (mut selectedLocation)) as |loc|}}
+            {{capitalize loc}}
+          {{/power-select}}
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Cost</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">$</span>
+            </div>
+            {{input class="form-control" value=cost type="number" min=0.01 max=9999.99 step=0.01}}
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Notes</label>
+          {{textarea class="form-control" value=notes}}
+        </div>
+        <div class="form-group">
+          <button class="btn btn-outline-success" {{action "addReceipt"}}>Add Receipt</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

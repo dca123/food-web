@@ -12,6 +12,7 @@ export default Route.extend({
     controller.set('meal_times', ['lunch', 'dinner'])
     model.objectAt(0).get('week').then((data) => {
       controller.set('title', `${data.get('month')}/${data.get('week_of')}`)
+      controller.set('cost', `$${data.get('cost')}`);
       controller.set('weekModel', data);
     });
   }
