@@ -20,9 +20,9 @@ export default Controller.extend(errorDisplay,{
       });
       newReceipt.save().then((data) => {
         this.successToast("Added Receipt");
+        this.get('model').reload();
       }, (error) => {
         newReceipt.deleteRecord();
-        console.log(error);
         this.errorToast(error);
       })
     },
@@ -31,6 +31,7 @@ export default Controller.extend(errorDisplay,{
       this.modalsManager.confirm({title:'Delete Receipt', body: 'Are you sure you want to delete this receipt ?'}).then(() => {
         receipt.destroyRecord().then(() => {
           this.successToast('Deleted Receipt !');
+          this.get('model').reload();
         })
       })
     }

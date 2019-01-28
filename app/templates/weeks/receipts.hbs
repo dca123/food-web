@@ -5,6 +5,7 @@
         Week of {{model.week_of}}/{{model.month}}
       {{/link-to}}
     </h2>
+    <h6 class="d-print-none">Total Cost - ${{model.cost}}</h6>
   </div>
 </div>
 <div class="row pt-3">
@@ -18,6 +19,7 @@
         </tr>
       </thead>
       <tbody>
+        {{data}}
         {{#each model.receipts as |receipt|}}
           <tr>
             <td>{{capitalize receipt.location}}</td>
@@ -45,10 +47,10 @@
           {{/power-select}}
         </div>
         <div class="form-group">
-          <label for="exampleInputEmail1">Cost</label>
+          <label>Cost</label>
           <div class="input-group">
             <div class="input-group-prepend">
-              <span class="input-group-text" id="basic-addon1">$</span>
+              <span class="input-group-text">$</span>
             </div>
             {{input class="form-control" value=cost type="number" min=0.01 max=9999.99 step=0.01}}
           </div>
