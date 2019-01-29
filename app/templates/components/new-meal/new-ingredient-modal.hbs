@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <h5 class="modal-title">
-          {{#if ingredientModel}}
+          {{#if editIngredient}}
             Edit {{input type="text" value=ingredientModel.name class="text-success" autofocus=true}}
           {{else}}
             Select the Location & Category for {{ingredient_name}}
@@ -14,25 +14,25 @@
   {{/modal.header}}
   {{#modal.body}}
     <div class="form-group">
-      {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=(if ingredientModel ingredientModel.location selectedLocation)
+      {{#power-select options=locations renderInPlace=true placeholder="Select a Location" selected=(if editIngredient ingredientModel.location selectedLocation)
             onchange=(action "selectIngredient") as |loc|}}
         {{capitalize loc}}
       {{/power-select}}
     </div>
     <div class="form-group">
-      {{#power-select options=ingredientCategories renderInPlace=true placeholder="Select a Category" selected=(if ingredientModel ingredientModel.category selectedCategory)
+      {{#power-select options=ingredientCategories renderInPlace=true placeholder="Select a Category" selected=(if editIngredient ingredientModel.category selectedCategory)
       onchange=(action "selectedCategory") as |cate|}}
         {{humanize cate}}
       {{/power-select}}
     </div>
   {{/modal.body}}
   {{#modal.footer}}
-    {{#if ingredientModel}}
+    {{#if editIngredient}}
       {{#bs-button type="danger" onClick=(action "deleteIngredient")}}{{fa-icon "trash"}}{{/bs-button}}
     {{/if}}
     {{#bs-button type="secondary" onClick=(action modal.close)}}{{fa-icon "times"}}{{/bs-button}}
     {{#bs-button type="primary" onClick=(action modal.submit) disabled=isDisabled}}
-      {{#if ingredientModel}}
+      {{#if editIngredient}}
         Edit
       {{else}}
         Save

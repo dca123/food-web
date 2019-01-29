@@ -8,7 +8,11 @@ COMPLETED - Service for category
 COMPLETED - Use YAML instead of enums
 COMPLETED - Calculate serving sizes
 COMPLETED - Fix issue of creating menu and not available on menu list
-
+COMPLETED - Make sure data is capitalized when stored and such
+Completed - Adding items exact name on ingredient Creation
+COMPLETED - Refresh Modal on Ingredient Creation
+COMPLETED - Redo Modals with ember modals
+COMPLETED - Add Receipts
 
 Refactoring with ember-concurrency
 UI Overhaul
@@ -17,11 +21,6 @@ Frequency column for meal
 Model Validations
 Refactor code entirely
 DOCUMENT your damn code if you can
-Make sure data is capitalized when stored and such
 
-Redo Modals with ember modals
-Add Recipts/Semester Funds
-Refresh Modal on Ingredient Creation
-Adding items exact name on ingredient Creation
-
+Add finance view
 Add Markup

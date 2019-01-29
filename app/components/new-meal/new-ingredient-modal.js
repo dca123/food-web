@@ -24,6 +24,8 @@ export default Component.extend({
       } else {
         this.sendAction("createIngredient", this.get('selectedLocation'), this.get('selectedCategory'));
       }
+      this.set('selectedCategory', null);
+      this.set('selectedLocation', null);
     },
     selectIngredient(location) {
       if (this.get('ingredientModel')) {

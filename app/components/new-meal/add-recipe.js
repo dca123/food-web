@@ -48,6 +48,7 @@ export default Component.extend(errorDisplay, {
       });
     },
     editIngredientModal(ingredientModel) {
+      this.set('editIngredient', true);
       let _ingredientModel = this.store.peekRecord('ingredient', ingredientModel.get('id'));
       this.set('ingredientModel', _ingredientModel);
       this.set('newIngredientOpen', true);
@@ -85,10 +86,10 @@ export default Component.extend(errorDisplay, {
     selectIngredient(ingredient) {
       if (ingredient.id == 0) {
         let name = ingredient.name.split("Create ")[1];
-        // this.set('ingredient_name', name);
-        // this.set('ingredientModel', null);
-        // this.set('newIngredientOpen', true);
-        
+        this.set('ingredient_name', name);
+        this.set('ingredientModel', null);
+        this.set('newIngredientOpen', true);
+
       } else {
         this.set('selectedIngredient', ingredient);
         let ingredientModel = this.store.findRecord('ingredient', ingredient.id)
