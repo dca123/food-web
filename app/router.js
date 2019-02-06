@@ -24,6 +24,13 @@ Router.map(function() {
     this.route('receipts', {
       path: '/:week_id/receipts'
     });
+    this.route('reports');
+  });
+  this.route('semesters', function() {
+    this.route('new');
+    this.route('edit', {
+      path: '/:semester_id/edit'
+    });
   });
 });
 

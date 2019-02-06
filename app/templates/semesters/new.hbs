@@ -1,0 +1,73 @@
+<div class="row pb-2 justify-content-end">
+  <div class="col">
+    <h2>{{titleState}} Semester</h2>
+    {{#if (eq titleState 'Edit')}}
+      <h6 class="d-print-none">Total Cost - ${{model.total}}</h6>
+    {{/if}}
+  </div>
+</div>
+<div class="row">
+  <div class="col col-xl-5">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Name</label>
+              {{input class="form-control" value=model.name type="text"}}
+              <small class="form-text text-muted">i.e Spring {{currentYear}}</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Semester Dates</label><br />
+              {{date-picker range=true action=(action "addDateRange") value=defaultDateRange buttonClasses="btn btn-sm btn-primary" minDate=minDate maxDate=maxDate}}
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Budget</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">$</span>
+                </div>
+                {{input class="form-control" value=model.budget type="number" min=0.01 step="0.01"}}
+              </div>
+              <small class="form-text text-muted">Total Budget for the Semester</small>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Spring/Fall</label>
+              <div class="form-check">
+                {{radio-button value=true groupValue=model.spring name="spring"}}
+                <label class="form-check-label">
+                  Spring
+                </label>
+              </div>
+              <div class="form-check">
+                {{radio-button value=false groupValue=model.spring name="spring"}}
+                <label class="form-check-label">
+                  Fall
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <button class="btn btn-outline-success" {{action "createSemester"}}>{{buttonState}} Semester</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

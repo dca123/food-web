@@ -1,0 +1,65 @@
+<div class="row pb-2 justify-content-end">
+  <div class="col">
+    <h2>Semester List
+      {{#if (not model)}}
+        <span class="badge badge-warning">No Semesters Found !</span>
+      {{/if}}
+    </h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 20%">
+            Name
+          </th>
+          <th scope="col" style="width: 20%">
+            Total Cost
+          </th>
+          <th scope="col" style="width: 20%">
+            Budget
+          </th>
+          <th scope="col" style="width: 20%">
+            Start
+          </th>
+          <th scope="col" style="width: 20%">
+            End
+          </th>
+          <th scope="col" style="width: 20%">
+            Spring
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each model as |semester|}}
+          <tr>
+            <td>
+              {{link-to semester.name "semesters.edit" semester.id}}
+            </td>
+            <td>
+              ${{format-number semester.total precision=2}}
+            </td>
+            <td>
+              ${{format-number semester.budget precision=2}}
+            </td>
+            <td>
+              {{moment-format semester.start 'MM-DD-YYYY'}}
+            </td>
+            <td>
+              {{moment-format semester.end 'MM-DD-YYYY'}}
+            </td>
+            <td>
+              {{#if semester.spring }}
+                {{fa-icon "check"}}
+              {{else}}
+                {{fa-icon "times"}}
+              {{/if}}
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -48,7 +48,7 @@
           <tr>
             {{#each daysOfWeek as |day|}}
               <td>
-                {{new-menu-day openDuplicateModel="openDuplicateModel" weekDestination=weekDestination weekModel=weekModel
+                {{new-menu-day openDuplicateModel="openDuplicateModel" createSemester="createSemester" weekDestination=weekDestination weekModel=weekModel
                   disableMenu=disableMealSelector mealTime=meal_time dayOfWeek=day mealArray=meals weekSaved=weekSaved}}
               </td>
             {{/each}}

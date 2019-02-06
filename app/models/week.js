@@ -8,6 +8,7 @@ export default DS.Model.extend({
   year: DS.attr('number'),
   cost: DS.attr('number'),
   menus: DS.hasMany('menu'),
+  semester: DS.belongsTo('semester'),
   receipts: DS.hasMany('receipt', {async: true}),
   shoppingList: memberAction({
     path: 'shopping_list',

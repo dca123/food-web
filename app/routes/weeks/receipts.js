@@ -6,3 +6,4 @@ export default Route.extend({
     return this.store.findRecord('week', params.week_id, {include: 'receipts'})
   }
 });
+//// TODO: Ember JS renders before included files

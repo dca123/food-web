@@ -70,11 +70,13 @@ export default Component.extend({
                 closeButton: false,
               });
             });
-          }, (data) => {
-            let errors = data.errors;
-            let message = errors[0]['week_of']
-            let week_id = errors[1]['week_id']
-            this.sendAction('openDuplicateModel', message, week_id);
+          }, (errorData) => {
+            let errors = errorData.errors;
+            let messageCode = errors[0]
+            let message = errors[1]
+            if (messageCode == 0) {
+              this.sendAction('createSemester', message);
+            }
           });
         }
       });

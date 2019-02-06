@@ -4,20 +4,18 @@
   }
 }
 $body-bg: #fcfcfc;
-$primary: #6f2c91;
-$secondary: #ffd700;
+$primary: #774898;
+$secondary: #fbb901;
 $primary-color: $primary;
 $ember-power-select-focus-border-color: $primary;
 $font-family-sans-serif: 'Open Sans', sans-serif;
-$text-muted: #a85252;
+.text-muted-select{
+  color: #a85252;
+}
 
 body {
   padding-top: 20px;
   padding-bottom: 100px;
-}
-
-.container {
-  // background-color: #ffffff;
 }
 
 .custom {
@@ -75,3 +73,5 @@ $container-max-widths: (
 #toast-container > .toast-error {
   background-color: $danger;
 }
+
+@import 'ember-basic-dropdown';

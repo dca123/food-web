@@ -32,6 +32,11 @@ export default Controller.extend({
           }
         });
       })
+    },
+    createSemester(message){
+      this.get('modalsManager').alert({title: 'Semester Missing', body: message}).then(() => {
+        this.transitionToRoute('semesters.new',);
+      })
     }
   }
 });
