@@ -23,7 +23,7 @@ capable of creating a menu and shopping list within minutes.
 + Designed with printability in mind
 + Add Receipts to the weeks
 + Keep Track of Finances
-+Semester Finance Tracking
++ Semester Finance Tracking
 
 ## Proposed Features
 + Finance UI
