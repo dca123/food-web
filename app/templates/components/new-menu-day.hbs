@@ -26,7 +26,7 @@
 <div class="row mt-2">
   <div class="col">
     {{#power-select searchField="name" options=meals placeholder="Select a Meal" disabled=disableMenu onchange=(action "addMeal") as |meal|}}
-      {{meal.name}}
+      <div class="{{if meal.recent "text-muted"}}">{{meal.name}}</div>
     {{/power-select}}
   </div>
 </div>
