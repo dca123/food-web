@@ -11,7 +11,7 @@ export default newController.extend(errorDisplay,{
       });
     },
     deleteSemester(){
-      this.modalsManager.confirm({title: 'Delete Semester', body: 'Are you sure you want to delete this semster ?'}).then(() => {
+      this.modalsManager.confirm({title: 'Delete Semester', body: 'Are you sure you want to delete this semster ? This will delete all related weeks and menus for this semester !'}).then(() => {
         this.get('model').destroyRecord();
         this.successToast('Semester has been deleted !');
         this.transitionToRoute('semesters.index');
