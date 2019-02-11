@@ -76,6 +76,8 @@ export default Component.extend({
             let message = errors[1]
             if (messageCode == 0) {
               this.sendAction('createSemester', message);
+            } else if (messageCode == 1) {
+              this.sendAction('openDuplicateModel', message.week_of, errors[2].week_id)
             }
           });
         }

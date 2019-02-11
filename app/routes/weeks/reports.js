@@ -9,11 +9,9 @@ export default Route.extend({
     controller.set('isLoading', true);
     this.ajax.request('/report').then((data) => {
       controller.set('reportData', data);
-      console.log(data);
 
       let weekData = data.weeksChart;
       let cumalativeData = data.cumalativeChart;
-
       controller.set('SemesterPurchaseData', {
         labels: weekData.label,
         datasets: [{
@@ -30,6 +28,7 @@ export default Route.extend({
           borderColor: '#e62a76',
           fill: false,
           data: cumalativeData.cost,
+          yAxisID: 'y-axis-0',
         }]
       });
 
@@ -39,6 +38,15 @@ export default Route.extend({
         tooltips: {
           mode: 'index',
           intersect: true
+        },
+        scales: {
+          yAxes: [{
+            id: 'y-axis-0',
+            type: 'linear',
+            ticks:{
+              max: parseInt(data.budget) + 2000
+            }
+          }]
         },
         annotation: {
           annotations: [{

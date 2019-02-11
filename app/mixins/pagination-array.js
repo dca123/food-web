@@ -11,7 +11,6 @@ export default Mixin.create({
     } else {
       const total = last;
       let start = 0;
-      console.log(last);
       if (last - self <= 3) {
         start = last - 5;
         return [...Array(length).keys()].map(i => i + (start));

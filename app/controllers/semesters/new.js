@@ -27,12 +27,17 @@ export default Controller.extend(errorDisplay, {
         this.transitionToRoute('semesters.index');
       }, (errorData) => {
         let errors = errorData.errors;
-        let currentSemester = errors[0]
-        let message = errors[1]
-        this.get('modalsManager').alert({title: 'Duplicate Week', body: message}).then(() => {
-          newSemester.deleteRecord();
-          this.transitionToRoute('semesters.edit', currentSemester);
-        })
+        let errorCode = errors[0]
+        if (errorCode == 0) {
+          let currentSemester = errors[1]
+          let message = errors[2]
+          this.get('modalsManager').alert({title: 'Duplicate Week', body: message}).then(() => {
+            newSemester.deleteRecord();
+            this.transitionToRoute('semesters.edit', currentSemester);
+          })
+        } else {
+          this.errorToast(errorData);
+        }
       });
     }
   }
