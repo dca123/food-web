@@ -24,6 +24,8 @@ module.exports = function(defaults) {
    }
   });
 
+  app.import("bower_components/chartjs-plugin-annotation/chartjs-plugin-annotation.min.js");
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

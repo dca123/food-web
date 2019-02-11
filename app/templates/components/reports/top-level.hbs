@@ -4,7 +4,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="text-center">Budget Usage: 65%</h4>
+            <h4 class="text-center">Budget Usage: {{reportData.usage}}%</h4>
           </div>
         </div>
       </div>
@@ -15,7 +15,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="text-center">This Week: $365</h4>
+            <h4 class="text-center">This Week: ${{reportData.current}}</h4>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <h4 class="text-center">Last Week: $235</h4>
+            <h4 class="text-center">Last Week: ${{reportData.last}}</h4>
           </div>
         </div>
       </div>
