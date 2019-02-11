@@ -10,5 +10,8 @@ export default Route.extend({
     controller.set('defaultDateRange', [moment(model.start), moment(model.end)])
     controller.set('titleState', 'Edit');
     controller.set('buttonState', 'Update');
+
+    let currentYear = moment().year();
+    controller.set('currentYear', currentYear);
   }
 });

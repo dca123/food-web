@@ -1,11 +1,19 @@
-<div class="row pb-2 justify-content-end">
+<div class="row justify-content-end">
   <div class="col">
     <h2>{{titleState}} Semester</h2>
     {{#if (eq titleState 'Edit')}}
       <h6 class="d-print-none">Total Cost - ${{model.total}}</h6>
     {{/if}}
   </div>
+  <div class="col-2">
+    {{#if (eq titleState 'Edit')}}
+      <button class="btn btn-block btn-lg d-print-none btn-outline-danger" {{action "deleteSemester"}}>
+        {{fa-icon "trash"}} Delete
+      </button>
+    {{/if}}
+  </div>
 </div>
+<hr />
 <div class="row">
   <div class="col col-xl-5">
     <div class="card">
@@ -15,7 +23,7 @@
             <div class="form-group">
               <label>Name</label>
               {{input class="form-control" value=model.name type="text"}}
-              <small class="form-text text-muted">i.e Spring {{currentYear}}</small>
+              <small class="form-text text-muted">i.e Spring Semester {{currentYear}}</small>
             </div>
           </div>
         </div>

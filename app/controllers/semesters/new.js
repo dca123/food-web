@@ -23,7 +23,8 @@ export default Controller.extend(errorDisplay, {
         end: this.get('model.end')
       });
       newSemester.save().then(() => {
-        this.errorDisplay.successToast('Semester has been Created !' )
+        this.successToast('Semester has been Created !' );
+        this.transitionToRoute('semesters.index');
       }, (errorData) => {
         let errors = errorData.errors;
         let currentSemester = errors[0]

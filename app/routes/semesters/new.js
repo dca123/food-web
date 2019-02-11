@@ -6,8 +6,8 @@ export default Route.extend({
     controller.set('titleState', 'New');
     controller.set('buttonState', 'Create');
     let currentMonth = moment().month();
-    let currentYear = new Date().getFullYear();
-    controller.set('currentYear', moment().year());
+    let currentYear = moment().year();
+    controller.set('currentYear', currentYear);
     if (currentMonth>= 0 && currentMonth <= 4) {
       controller.set('minDate', moment(`01/01/${currentYear}`));
       controller.set('maxDate', moment(`05/31/${currentYear}`));
