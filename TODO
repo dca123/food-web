@@ -13,15 +13,16 @@ Completed - Adding items exact name on ingredient Creation
 COMPLETED - Refresh Modal on Ingredient Creation
 COMPLETED - Redo Modals with ember modals
 COMPLETED - Add Receipts
+COMPLETED - Frequency column for meal
+COMPLETED - Add finance view
 
 Refactoring with ember-concurrency
 UI Overhaul
 Benchmark SQL and make it better
-Frequency column for meal
 Model Validations
 Refactor code entirely
 DOCUMENT your damn code if you can
 
-Add finance view
 Add Markup
 Send email to treasurer
+Check on how semesters are created
