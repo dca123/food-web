@@ -1,40 +1,37 @@
-# Food App - Web UI
+![Meal Manager](https://i.imgur.com/UkluIw4.png)
+---
+# Table of Contents
+- [Problem](#problem)
+- [Solution](#solution)
+- [Features](#features)
+- [Technologies](#technologies)
+- [Usage](#usage)
+# Problem
+The current system used in our chapter is ineffective. It involves copying and pasting from a google document that holds all the recipes, adding up the ingredient manually, and assigning the pickup locations from memory. It is a tedious and boring task that often results in an error when an ingredient is forgotten to be added to the shopping list. This can often result in having to go shopping outside of normal shopping days making it inconvenient for members of the chapter. 
 
-This is the web ui for the DTD Food App. The purpose of this app is to streamline
-the menu creation process in my fraternity house.
+# Solution
+This system allows the user to generate a menu and shopping list within minutes. The user can create a menu for either this week or the next week. This is done by selecting the meals from a dropdown and generating the shopping list. After purchasing the ingredient, the receipts can be added to keep track of finances for the food committee.
 
-This application is created with Ember.js
+This repo contains the front-end of the meal manager. It is built with [Ember.js](https://emberjs.com/) which uses an MVC framework similar to Ruby on Rails. The web pages were designed with printability in mind since the menus and shopping lists have to be printed. Data is served via a RESTful API provided by the [back-end](https://github.com/dca123/food-api). 
 
-The user can create a menu for either this week, or the next week. This involves selecting the meals
-from the dropdown and finally generating the shopping list. After the purchase, the receipts can be added to
-the correct weeks to keep track of the finances for the food committee.
+# Features
+-   Create and update menus up to two weeks
+-   Create and update meals from the database along with ingredients
+-   Generate shopping lists ordered by location and type of ingredient
+-   Add receipts
+-   Keep track of finances by week and semester
+# Technologies
+- [Ember.js](https://emberjs.com/)
+- [Bootstrap](https://getbootstrap.com/)
+- [Font Awesome](https://fontawesome.com/)
 
-This application was created because of the ineffectiveness of the current system which involved copy-pasting
-from a google doc to create the menu and grocery list, a tedious and boring task. With this new system, the user is
-capable of creating a menu and shopping list within minutes.
-
-***
-
-## Features
-+ Creating and Updating the week's menu
-+ Create week menus a week in advance.
-+ Create, Edit, Delete Meals from the database along with ingredients
-+ Generate Shopping lists ordered by location and type of ingredient, i.e 'meat', dairy
-+ Designed with printability in mind
-+ Add Receipts to the weeks
-+ Keep Track of Finances
-+ Semester Finance Tracking
-
-## Proposed Features
-+ Finance UI
-
-***
-
-## Prerequisites
-
-You will need the following things properly installed on your computer.
-
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+# Usage
+1. Install dependencies
+```bash
+npm install
+```
+2. Start the database
+```bash
+npm run start
+```
+Navigate to [localhost:4200](http://localhost:4200/)
